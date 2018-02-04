@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name=viewport content='width=device-width, initial-scale=1' />
+    <title>Library</title>
+    <style>
+      body {
+        margin: .5rem;
+        background: whitesmoke;
+      }
+      img {
+        /* border: 1px solid rgba(0, 0, 0, .1); */
+        border-radius: 3px;
+        box-shadow: .5px .5px 1px 1px rgba(0, 0, 0, .15);
+        /* for silly transforms */
+        transform-origin: 0% 0%;
+        position: relative;
+      }
+      div {
+        display: inline-block;
+        margin: .5rem;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const library = [
+        {coverURL: 'nes_megaman6.jpg'},
+        {coverURL: 'nes_theguardianlegend.jpg'},
+        {coverURL: 'nes_tmntiiithemanhattanproject.jpg'},
+        {coverURL: 'nes_rivercityransom.jpg'},
+        {coverURL: 'nes_solarjetman.jpg'},
+        {coverURL: 'nes_supermariobros3.jpg'},
+        {coverURL: 'n64_conkersbadfurday.jpg', coverOrientation: -90 },
+        {coverURL: 'ps4_lastofusremastered.jpg'}
+      ]
+      library.forEach(media => {
+        const img = new Image()
+        const wrapper = document.createElement('div')
+        if (media.coverOrientation) {
+          // todo: replace with image-orientation.
+          img.onload = () => {
+            const {width, height} = img.getBoundingClientRect()
+            wrapper.style.width = `${width}px`
+            wrapper.style.height = `${height}px`
+            img.style.top = `${height}px`
+          }
+          img.style['transform'] = `rotate(${media.coverOrientation}deg)`
+        }
+        img.src = `assets/thumbnails/${media.coverURL}`
+        const anchor = document.createElement('a')
+        anchor.href = `assets/originals/${media.coverURL}`
+        anchor.appendChild(img)
+        wrapper.appendChild(anchor)
+        document.body.appendChild(wrapper)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+exec make -f- "$@" << 'eof'
+
+empty :=
+space := $(empty) $(empty)
+.RECIPEPREFIX := $(space)
+.ONESHELL:
+
+.PHONY: all
+all: $(patsubst originals/%,thumbnails/%,$(wildcard originals/*))
+
+thumbnails/%: originals/% | thumbnails/
+  @convert -strip -quality 90% -resize 400 '$<' '$@'
+
+thumbnails/:; @mkdir -p '$@'
