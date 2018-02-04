@@ -11,16 +11,40 @@
         margin: .5rem;
         background: whitesmoke;
       }
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1024px;
+        margin: auto;
+      }
+      .foo {
+        /* display: inline-block; */
+        /* background: red; */
+        /* border: 1px solid red;
+        overflow-wrap: break-word; */
+        /* max-width: 50%; */
+      }
       .wrapper {
         display: inline-block;
+        text-align: center;
+        /* vertical-align: top; */
+        /* max-width: 300px; */
       }
       .media {
         display: inline-block;
+        /* vertical-align: top; */
         margin: .5rem;
-        vertical-align: top;
+      }
+      .title {
+        /* vertical-align: top; */
+        display: inline-block;
+        /* overflow-wrap: break-word; */
+        margin: .5rem .5rem 0rem .5rem;
+        /* word-wrap: break-word; */
       }
       .cover {
-        display: inline-block;
+        /* display: inline-block; */
         background: -218px 0 no-repeat;
         width: 182px;
         position: relative;
@@ -31,6 +55,7 @@
     </style>
   </head>
   <body>
+    <div class=content></div>
     <script>
       const library = [
         {title: 'Mega Man 6', coverURL: 'nes_megaman6.jpg'},
@@ -45,14 +70,24 @@
       library.forEach(media => {
         const wrapper = document.createElement('div')
         wrapper.className = 'wrapper'
+        const mediaContainerWrapper = document.createElement('span')
+        mediaContainerWrapper.className = 'foo'
         const mediaContainer = document.createElement('div')
         wrapper.appendChild(mediaContainer)
         mediaContainer.className = 'media'
         const anchor = document.createElement('a')
+        anchor.className = 'bar'
         anchor.href = `assets/originals/${media.coverURL}`
         mediaContainer.appendChild(anchor)
         const cover = document.createElement('div')
+        const textAnchor = anchor.cloneNode()
         anchor.appendChild(cover)
+        const text = document.createElement('span')
+        textAnchor.appendChild(document.createTextNode(media.title))
+        text.appendChild(textAnchor)
+        text.className = 'title'
+        mediaContainerWrapper.appendChild(text)
+        mediaContainer.appendChild(mediaContainerWrapper)
         cover.className = 'cover'
         cover.style['background-image'] = `url(assets/thumbnails/${media.coverURL})`
         if (media.coverOrientation) {
@@ -63,13 +98,15 @@
           if (media.coverOrientation % 90 === 0) {
             const height = cover.getBoundingClientRect().height
             cover.style.top = `${height}px`
-            mediaContainer.style.height = `${height}px`
             mediaContainer.style.width = `${sizer.height}px`
+          } else {
+            const width = cover.getBoundingClientRect().width
+            mediaContainer.style.width = `${width}px`
           }
           cover.style.height = `${sizer.height}px`
         }
         sizer.src = `assets/thumbnails/${media.coverURL}`
-        document.body.appendChild(wrapper)
+        document.querySelector('.content').appendChild(wrapper)
       })
     </script>
   </body>
