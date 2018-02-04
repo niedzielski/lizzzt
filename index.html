@@ -10,41 +10,31 @@
       body {
         margin: .5rem;
         background: whitesmoke;
+        font-family: sans-serif;
       }
       .content {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
         max-width: 1024px;
         margin: auto;
-      }
-      .foo {
-        /* display: inline-block; */
-        /* background: red; */
-        /* border: 1px solid red;
-        overflow-wrap: break-word; */
-        /* max-width: 50%; */
       }
       .wrapper {
         display: inline-block;
         text-align: center;
-        /* vertical-align: top; */
-        /* max-width: 300px; */
       }
       .media {
         display: inline-block;
-        /* vertical-align: top; */
         margin: .5rem;
       }
       .title {
-        /* vertical-align: top; */
         display: inline-block;
-        /* overflow-wrap: break-word; */
         margin: .5rem .5rem 0rem .5rem;
-        /* word-wrap: break-word; */
+        font-weight: 550;
       }
+      .title a {        color: black; text-decoration: none;
+}
       .cover {
-        /* display: inline-block; */
         background: -218px 0 no-repeat;
         width: 182px;
         position: relative;
@@ -58,14 +48,14 @@
     <div class=content></div>
     <script>
       const library = [
-        {title: 'Mega Man 6', coverURL: 'nes_megaman6.jpg'},
-        {title: 'The Guardian Legend', coverURL: 'nes_theguardianlegend.jpg'},
-        {title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project', coverURL: 'nes_tmntiiithemanhattanproject.jpg'},
-        {title: 'River City Ransom', coverURL: 'nes_rivercityransom.jpg'},
-        {title: 'Solar Jetman', coverURL: 'nes_solarjetman.jpg'},
-        {title: 'Super Mario Bros. 3', coverURL: 'nes_supermariobros3.jpg'},
-        {title: 'Conker\'s Bad Fur Day', coverURL: 'n64_conkersbadfurday.jpg', coverOrientation: -90 },
-        {title: 'The Last of Us Remastered', coverURL: 'ps4_lastofusremastered.jpg'}
+        {title: 'Mega Man 6', cover: {url: 'nes_megaman6.jpg'}},
+        {title: 'The Guardian Legend', cover: {url: 'nes_theguardianlegend.jpg'}},
+        {title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project', cover: {url: 'nes_tmntiiithemanhattanproject.jpg'}},
+        {title: 'River City Ransom', cover: {url: 'nes_rivercityransom.jpg'}},
+        {title: 'Solar Jetman', cover: {url: 'nes_solarjetman.jpg'}},
+        {title: 'Super Mario Bros. 3', cover: {url: 'nes_supermariobros3.jpg'}},
+        {title: 'Conker\'s Bad Fur Day', cover: {url: 'n64_conkersbadfurday.jpg', orientation: -90 }},
+        {title: 'The Last of Us Remastered', cover: {url: 'ps4_lastofusremastered.jpg'}}
       ]
       library.forEach(media => {
         const wrapper = document.createElement('div')
@@ -77,7 +67,7 @@
         mediaContainer.className = 'media'
         const anchor = document.createElement('a')
         anchor.className = 'bar'
-        anchor.href = `assets/originals/${media.coverURL}`
+        anchor.href = `assets/originals/${media.cover.url}`
         mediaContainer.appendChild(anchor)
         const cover = document.createElement('div')
         const textAnchor = anchor.cloneNode()
@@ -89,13 +79,13 @@
         mediaContainerWrapper.appendChild(text)
         mediaContainer.appendChild(mediaContainerWrapper)
         cover.className = 'cover'
-        cover.style['background-image'] = `url(assets/thumbnails/${media.coverURL})`
-        if (media.coverOrientation) {
-          cover.style['transform'] = `rotate(${media.coverOrientation}deg)`
+        cover.style['background-image'] = `url(assets/thumbnails/${media.cover.url})`
+        if (media.cover.orientation) {
+          cover.style['transform'] = `rotate(${media.cover.orientation}deg)`
         }
         const sizer = new Image()
         sizer.onload = () => {
-          if (media.coverOrientation % 90 === 0) {
+          if (media.cover.orientation % 90 === 0) {
             const height = cover.getBoundingClientRect().height
             cover.style.top = `${height}px`
             mediaContainer.style.width = `${sizer.height}px`
@@ -105,7 +95,7 @@
           }
           cover.style.height = `${sizer.height}px`
         }
-        sizer.src = `assets/thumbnails/${media.coverURL}`
+        sizer.src = `assets/thumbnails/${media.cover.url}`
         document.querySelector('.content').appendChild(wrapper)
       })
     </script>
