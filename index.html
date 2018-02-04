@@ -32,10 +32,9 @@
         margin: .5rem .5rem 0rem .5rem;
         font-weight: 550;
       }
-      .title a {        color: black; text-decoration: none;
-}
+      .title a {color: black; text-decoration: none;}
       .cover {
-        background: -218px 0 no-repeat;
+        background-repeat: no-repeat;
         width: 182px;
         position: relative;
         transform-origin: top left;
@@ -47,15 +46,16 @@
   <body>
     <div class=content></div>
     <script>
+      // the cover project for games
       const library = [
-        {title: 'Mega Man 6', cover: {url: 'nes_megaman6.jpg'}},
-        {title: 'The Guardian Legend', cover: {url: 'nes_theguardianlegend.jpg'}},
-        {title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project', cover: {url: 'nes_tmntiiithemanhattanproject.jpg'}},
-        {title: 'River City Ransom', cover: {url: 'nes_rivercityransom.jpg'}},
-        {title: 'Solar Jetman', cover: {url: 'nes_solarjetman.jpg'}},
-        {title: 'Super Mario Bros. 3', cover: {url: 'nes_supermariobros3.jpg'}},
-        {title: 'Conker\'s Bad Fur Day', cover: {url: 'n64_conkersbadfurday.jpg', orientation: -90 }},
-        {title: 'The Last of Us Remastered', cover: {url: 'ps4_lastofusremastered.jpg'}}
+        {title: 'Mega Man 6', cover: {url: 'nes_megaman6.jpg', origin: {x: 218, y: 0}, orientation: 0}},
+        {title: 'The Guardian Legend', cover: {url: 'nes_theguardianlegend.jpg', origin: {x: 218, y: 0}, orientation: 0}},
+        {title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project', cover: {url: 'nes_tmntiiithemanhattanproject.jpg', origin: {x: 218, y: 0}, orientation: 0}},
+        {title: 'River City Ransom', cover: {url: 'nes_rivercityransom.jpg', origin: {x: 218, y: 0}, orientation: 0}},
+        {title: 'Solar Jetman', cover: {url: 'nes_solarjetman.jpg', origin: {x: 218, y: 0}}, orientation: 0},
+        {title: 'Super Mario Bros. 3', cover: {url: 'nes_supermariobros3.jpg', origin: {x: 218, y: 0}, orientation: 0}},
+        {title: 'Conker\'s Bad Fur Day', cover: {url: 'n64_conkersbadfurday.jpg', origin: {x: 218, y: 0}, orientation: -90}},
+        {title: 'The Last of Us Remastered', cover: {url: 'ps4_lastofusremastered.jpg', origin: {x: 211, y: 0}, orientation: 0}}
       ]
       library.forEach(media => {
         const wrapper = document.createElement('div')
@@ -80,12 +80,13 @@
         mediaContainer.appendChild(mediaContainerWrapper)
         cover.className = 'cover'
         cover.style['background-image'] = `url(assets/thumbnails/${media.cover.url})`
-        if (media.cover.orientation) {
+        cover.style['background-position'] = `-${media.cover.origin.x}px -${media.cover.origin.y}px`
+        if (media.cover.orientation % 360) {
           cover.style['transform'] = `rotate(${media.cover.orientation}deg)`
         }
         const sizer = new Image()
         sizer.onload = () => {
-          if (media.cover.orientation % 90 === 0) {
+          if (media.cover.orientation % 90 === 0 && media.cover.orientation % 360) {
             const height = cover.getBoundingClientRect().height
             cover.style.top = `${height}px`
             mediaContainer.style.width = `${sizer.height}px`
