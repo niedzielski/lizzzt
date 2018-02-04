@@ -5,55 +5,70 @@
     <meta name=viewport content='width=device-width, initial-scale=1' />
     <title>Library</title>
     <style>
+      html {box-sizing: border-box;}
+      *, *:before, *:after {box-sizing: inherit;}
       body {
         margin: .5rem;
         background: whitesmoke;
       }
-      img {
-        /* border: 1px solid rgba(0, 0, 0, .1); */
-        border-radius: 3px;
-        box-shadow: .5px .5px 1px 1px rgba(0, 0, 0, .15);
-        /* for silly transforms */
-        transform-origin: 0% 0%;
-        position: relative;
+      .wrapper {
+        display: inline-block;
       }
-      div {
+      .media {
         display: inline-block;
         margin: .5rem;
         vertical-align: top;
+      }
+      .cover {
+        display: inline-block;
+        background: -218px 0 no-repeat;
+        width: 182px;
+        position: relative;
+        transform-origin: top left;
+        border-radius: 3px;
+        box-shadow: .5px .5px 1px 1px rgba(0, 0, 0, .15);
       }
     </style>
   </head>
   <body>
     <script>
       const library = [
-        {coverURL: 'nes_megaman6.jpg'},
-        {coverURL: 'nes_theguardianlegend.jpg'},
-        {coverURL: 'nes_tmntiiithemanhattanproject.jpg'},
-        {coverURL: 'nes_rivercityransom.jpg'},
-        {coverURL: 'nes_solarjetman.jpg'},
-        {coverURL: 'nes_supermariobros3.jpg'},
-        {coverURL: 'n64_conkersbadfurday.jpg', coverOrientation: -90 },
-        {coverURL: 'ps4_lastofusremastered.jpg'}
+        {title: 'Mega Man 6', coverURL: 'nes_megaman6.jpg'},
+        {title: 'The Guardian Legend', coverURL: 'nes_theguardianlegend.jpg'},
+        {title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project', coverURL: 'nes_tmntiiithemanhattanproject.jpg'},
+        {title: 'River City Ransom', coverURL: 'nes_rivercityransom.jpg'},
+        {title: 'Solar Jetman', coverURL: 'nes_solarjetman.jpg'},
+        {title: 'Super Mario Bros. 3', coverURL: 'nes_supermariobros3.jpg'},
+        {title: 'Conker\'s Bad Fur Day', coverURL: 'n64_conkersbadfurday.jpg', coverOrientation: -90 },
+        {title: 'The Last of Us Remastered', coverURL: 'ps4_lastofusremastered.jpg'}
       ]
       library.forEach(media => {
-        const img = new Image()
         const wrapper = document.createElement('div')
-        if (media.coverOrientation) {
-          // todo: replace with image-orientation.
-          img.onload = () => {
-            const {width, height} = img.getBoundingClientRect()
-            wrapper.style.width = `${width}px`
-            wrapper.style.height = `${height}px`
-            img.style.top = `${height}px`
-          }
-          img.style['transform'] = `rotate(${media.coverOrientation}deg)`
-        }
-        img.src = `assets/thumbnails/${media.coverURL}`
+        wrapper.className = 'wrapper'
+        const mediaContainer = document.createElement('div')
+        wrapper.appendChild(mediaContainer)
+        mediaContainer.className = 'media'
         const anchor = document.createElement('a')
         anchor.href = `assets/originals/${media.coverURL}`
-        anchor.appendChild(img)
-        wrapper.appendChild(anchor)
+        mediaContainer.appendChild(anchor)
+        const cover = document.createElement('div')
+        anchor.appendChild(cover)
+        cover.className = 'cover'
+        cover.style['background-image'] = `url(assets/thumbnails/${media.coverURL})`
+        if (media.coverOrientation) {
+          cover.style['transform'] = `rotate(${media.coverOrientation}deg)`
+        }
+        const sizer = new Image()
+        sizer.onload = () => {
+          if (media.coverOrientation % 90 === 0) {
+            const height = cover.getBoundingClientRect().height
+            cover.style.top = `${height}px`
+            mediaContainer.style.height = `${height}px`
+            mediaContainer.style.width = `${sizer.height}px`
+          }
+          cover.style.height = `${sizer.height}px`
+        }
+        sizer.src = `assets/thumbnails/${media.coverURL}`
         document.body.appendChild(wrapper)
       })
     </script>
