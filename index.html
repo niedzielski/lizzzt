@@ -18,11 +18,11 @@
         justify-content: space-around;
         max-width: 1024px;
         margin: auto;
+        list-style: none;
+        padding: 0;
       }
-      /* .bar { display: inline-block; } */
       .cell {
         margin: .5rem;
-        /* text-align: center; */
       }
       .media {
       }
@@ -32,7 +32,7 @@
         font-weight: 550;
         text-align: center;
       }
-      .title a {color: black; text-decoration: none;}
+      .title > a {color: black; text-decoration: none;}
       .cover {
         display: inline-block;
         background-repeat: no-repeat;
@@ -44,7 +44,8 @@
     </style>
   </head>
   <body>
-    <div class=content></div>
+    <ul class=content>
+    </ul>
     <script>
       // the cover project for games
       const library = [
@@ -57,9 +58,8 @@
         {title: 'Conker\'s Bad Fur Day', cover: {url: 'n64_conkersbadfurday.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: -90}},
         {title: 'The Last of Us Remastered', cover: {url: 'ps4_lastofusremastered.jpg', origin: {x: -211, y: 0, width: 189, height: 236}, orientation: 0}}
       ]
-      // bar is positioned incorrectly
       library.forEach(media => {
-        const cell = document.createElement('div')
+        const cell = document.createElement('li')
         cell.className = 'cell'
         const mediaContainer = document.createElement('div')
         mediaContainer.className = 'media'
