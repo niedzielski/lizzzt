@@ -19,26 +19,25 @@
         max-width: 1024px;
         margin: auto;
       }
-      .wrapper {
-        display: inline-block;
-        text-align: center;
+      /* .bar { display: inline-block; } */
+      .cell {
+        margin: .5rem;
+        /* text-align: center; */
       }
       .media {
-        display: inline-block;
-        margin: .5rem;
       }
-      .bar { display: inline-block; }
       .title {
         display: block;
-        margin: .5rem .5rem 0rem .5rem;
+        padding: .5rem .5rem 0 .5rem;
         font-weight: 550;
+        text-align: center;
       }
       .title a {color: black; text-decoration: none;}
       .cover {
         display: inline-block;
         background-repeat: no-repeat;
         position: relative;
-        /* transform-origin: top left; */
+        transform-origin: 0 0;
         border-radius: 3px;
         box-shadow: .5px .5px 1px 1px rgba(0, 0, 0, .15);
       }
@@ -58,25 +57,26 @@
         {title: 'Conker\'s Bad Fur Day', cover: {url: 'n64_conkersbadfurday.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: -90}},
         {title: 'The Last of Us Remastered', cover: {url: 'ps4_lastofusremastered.jpg', origin: {x: -211, y: 0, width: 189, height: 236}, orientation: 0}}
       ]
+      // bar is positioned incorrectly
       library.forEach(media => {
-        const wrapper = document.createElement('div')
-        wrapper.className = 'wrapper'
+        const cell = document.createElement('div')
+        cell.className = 'cell'
         const mediaContainer = document.createElement('div')
         mediaContainer.className = 'media'
         const anchor = document.createElement('a')
-        wrapper.appendChild(anchor)
+        cell.appendChild(anchor)
         anchor.className = 'bar'
         anchor.href = `assets/originals/${media.cover.url}`
-        anchor.appendChild(mediaContainer)
         const cover = document.createElement('div')
         const textAnchor = anchor.cloneNode()
         mediaContainer.appendChild(cover)
+        anchor.appendChild(mediaContainer)
         const text = document.createElement('span')
         textAnchor.appendChild(document.createTextNode(media.title))
         text.appendChild(textAnchor)
         text.className = 'title'
         text.style.width = `${media.cover.origin.width}px`
-        wrapper.appendChild(text)
+        cell.appendChild(text)
         cover.className = 'cover'
         cover.style['background-image'] = `url(assets/thumbnails/${media.cover.url})`
         cover.style['background-position'] = `${media.cover.origin.x}px ${media.cover.origin.y}px`
@@ -84,7 +84,7 @@
           cover.style['transform'] = `rotate(${media.cover.orientation}deg)`
         }
         if (media.cover.orientation % 90 === 0 && media.cover.orientation % 360) {
-          // cover.style.top = `${media.cover.origin.height}px`
+          cover.style.top = `${media.cover.origin.height}px`
           cover.style.width = `${media.cover.origin.height}px`
           cover.style.height = `${media.cover.origin.width}px`
         } else {
@@ -93,7 +93,7 @@
         }
         mediaContainer.style.width = `${media.cover.origin.width}px`
         mediaContainer.style.height = `${media.cover.origin.height}px`
-        document.querySelector('.content').appendChild(wrapper)
+        document.querySelector('.content').appendChild(cell)
       })
     </script>
   </body>
