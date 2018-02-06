@@ -56,7 +56,10 @@
     <ul class=content>
     </ul>
     <script>
-      // the cover project for games
+      // scale? some kind of max-width.
+      // the cover project for games? libretro can do thumbnails. idk... i want them to look stellar but i also don't want to maintain these?
+      // would prefer thumbnails be consistently sized actually, especially within a system.
+      // filter sort reorder
       const library = [ // todo: url should include assets/thumbnails/?
         {title: 'Mega Man 6', cover: {url: 'nes_megaman6.jpg', origin: {x: -218, y: 0, width: 182, height: 250}, orientation: 0}},
         {title: 'The Guardian Legend', cover: {url: 'nes_theguardianlegend_3.jpg', origin: {x: -218, y: 0, width: 182, height: 250}, orientation: 0}},
@@ -81,9 +84,9 @@
         {title: 'Tetris', cover: {url: 'gb_tetris.jpg', origin: {x: -212, y: 0, width: 188, height: 168}, orientation: 0}},
         {title: 'Wario Land II', cover: {url: 'gb_wariolandii.jpg', origin: {x: -212, y: 0, width: 188, height: 168}, orientation: 0}},
         {title: 'Wario Land: Super Mario Land 3', cover: {url: 'gb_wariolandsupermarioland3.jpg', origin: {x: -212, y: 0, width: 188, height: 168}, orientation: 0}},
-        {title: 'Metal Gear Solid: The Twin Snakes', cover: {url: 'gc_metalgearsolidthetwinsnakes.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Viewtiful Joe', cover: {url: 'gc_viewtifuljoe.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'GoldenEye 007', cover: {url: 'label_n64_007goldeneye_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
+        {title: 'Metal Gear Solid: The Twin Snakes', cover: {url: 'gc_metalgearsolidthetwinsnakes.jpg', origin: {x: -211, y: 0, width: 189, height: 267}, orientation: 0}},
+        {title: 'Viewtiful Joe', cover: {url: 'gc_viewtifuljoe.jpg', origin: {x: -211, y: 0, width: 189, height: 267}, orientation: 0}},
+        {title: 'GoldenEye 007', cover: {url: 'label_n64_007goldeneye_eu.jpg', origin: {x: 0, y: 0, width: 400, height: 459}, scale: .5, orientation: 0}},
         {title: 'The Legend of Zelda: Ocarina of Time', cover: {url: 'n64_legendofzeldaocarinaoftimeplayerschoice.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: -90}},
         {title: 'The Legend of Zelda: Majora\'s Mask', cover: {url: 'n64_thelegendofzeldamajorasmask.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: -90}},
         {title: 'Cobra Command', cover: {url: 'nes_cobracommand.jpg', origin: {x: -218, y: 0, width: 182, height: 250}, orientation: 0}},
@@ -94,53 +97,54 @@
         {title: 'The Punisher', cover: {url: 'nes_thepunisher.jpg', origin: {x: -218, y: 0, width: 182, height: 250}, orientation: 0}},
         {title: 'Teenage Mutant Ninja Turtles II: The Arcade Game', cover: {url: 'nes_tmnt2arcade.jpg', origin: {x: -218, y: 0, width: 182, height: 250}, orientation: 0}},
         {title: 'Teenage Mutant Ninja Turtles', cover: {url: 'nes_TMNT.jpg', origin: {x: -218, y: 0, width: 182, height: 250}, orientation: 0}},
-        {title: 'The Pinball of the Dead', cover: {url: 'pinballofthedead.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Final Fantasy 7', cover: {url: 'ps1_finalfantasy7_front_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Heart of Darkness', cover: {url: 'ps1_heartofdarkness.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Metal Gear Solid V: The Phantom Pain', cover: {url: 'ps1_metalgearsolid_5.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
+        {title: 'The Pinball of the Dead', cover: {url: 'pinballofthedead.jpg', origin: {x: -212, y: 0, width: 188, height: 168}, orientation: 0}},
+        {title: 'Final Fantasy 7', cover: {url: 'ps1_finalfantasy7_front_eu.jpg', origin: {x: -17, y: 0, width: 365, height: 312}, orientation: 0}},
+        {title: 'Heart of Darkness', cover: {url: 'ps1_heartofdarkness.jpg', origin: {x: -208, y: 0, width: 192, height: 170}, orientation: 0}},
+        {title: 'Metal Gear Solid', cover: {url: 'ps1_metalgearsolid_5.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
         {title: 'Grand Theft Auto: Vice City', cover: {url: 'ps2_gtavicecity.jpg', origin: {x: -212, y: 0, width: 188, height: 267}, orientation: 0}},
         {title: 'Katamari Damacy', cover: {url: 'ps2_katamaridamacy.jpg', origin: {x: -211, y: 0, width: 188, height: 267}, orientation: 0}},
         {title: 'Twisted Metal: Black', cover: {url: 'ps2_twistedmetalblack.jpg', origin: {x: -212, y: 0, width: 188, height: 267}, orientation: 0}},
         {title: 'We ♥ Katamari', cover: {url: 'ps2_welovekatamari.jpg', origin: {x: -212, y: 0, width: 188, height: 267}, orientation: 0}},
-        {title: 'Katamari Forever', cover: {url: 'ps3_katamariforever_3.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Metal Gear Solid: The Legacy Collection', cover: {url: 'ps3_metalgearsolidthelegacycollection.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Journey Collector\'s Edition', cover: {url: 'ps4_journeycollectorsedition_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Castlevania: Symphony of the Night', cover: {url: 'ps_castlevaniasymphonyofthenight.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
+        {title: 'Katamari Forever', cover: {url: 'ps3_katamariforever_3.jpg', origin: {x: -210, y: 0, width: 190, height: 218}, orientation: 0}},
+        {title: 'Metal Gear Solid: The Legacy Collection', cover: {url: 'ps3_metalgearsolidthelegacycollection.jpg', origin: {x: -210, y: 0, width: 190, height: 218}, orientation: 0}},
+        {title: 'Journey Collector\'s Edition', cover: {url: 'ps4_journeycollectorsedition_eu.jpg', origin: {x: -211, y: 0, width: 189, height: 236}, orientation: 0}},
+        {title: 'Castlevania: Symphony of the Night', cover: {url: 'ps_castlevaniasymphonyofthenight.jpg', origin: {x: -211, y: 0, width: 189, height: 267}, orientation: 0}},
         {title: 'Retro City Rampage', cover: {url: 'pc_retrocityrampage.jpg', origin: {x: -209, y: -56, width: 158, height: 223}, orientation: 0}},
-        {title: 'Earthworm Jim 2', cover: {url: 'saturn_earthwormjim2.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Fighting Vipers', cover: {url: 'saturn_fightingvipers_2_jp.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'The House of the Dead 2', cover: {url: 'saturn_houseofthedead_2_jp.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Panzer Dragoon II Zwei', cover: {url: 'saturn_panzerdragooniizwei_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Panzer Dragoon', cover: {url: 'saturn_panzerdragoon_jp.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Panzer Dragoon Saga', cover: {url: 'saturn_panzerdragoonsaga_2.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Virtua Cop 2', cover: {url: 'saturn_virtuacop2_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Virtua Cop', cover: {url: 'saturn_virtuacop.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Virtua Figther 2', cover: {url: 'saturn_virtuafighter2_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Donkey Kong Country 2: Diddy\'s Kong Quest', cover: {url: 'snes_dkc2final.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Donkey Kong Country', cover: {url: 'snes_donkeykongcountry.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Earthbound', cover: {url: 'snes_earthbound.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Killer Instinct', cover: {url: 'snes_killerinstinct.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Kirby Super Star', cover: {url: 'snes_kirbysuperstar.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Mega Man X2', cover: {url: 'snes_megamanx2.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Mega Man X3', cover: {url: 'snes_megamanx3.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Mega Man X', cover: {url: 'snes_megamanx.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Star Fox', cover: {url: 'snes_starfox_2_jp.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Super Mario World', cover: {url: 'snes_supermarioworld.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Super Metroid', cover: {url: 'snes_supermetroid.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'The Legend of Zelda: A Link to the Past', cover: {url: 'snes_thelegendofzeldaalinktothepast.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'The Legend of Zelda: Breath of the Wild', cover: {url: 'switch_zeldabreathofthewild.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Animal Crossing: City Folk', cover: {url: 'wii_animal-crossing-city-folk.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Resident Evil: The Darkside Chronicles', cover: {url: 'wii_residentevilthedarksidechronicles.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Resident Evil: The Umbrella Chronicles', cover: {url: 'wii_residentevilumbrellachronicles.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Nintendo Land', cover: {url: 'wiiu_nintendoland.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Wii Play', cover: {url: 'wii_wiiplay_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Wii Sports', cover: {url: 'wii_wiisports_gb.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Wii Sports Resort', cover: {url: 'wii_wii-sports-resort.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Another World', cover: {url: 'win_anotherworld_eu.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Diablo', cover: {url: 'win_diablo_ca.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'Diablo II', cover: {url: 'win_diabloii_2.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'DOOM', cover: {url: 'win_doom.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}},
-        {title: 'F.E.A.R.', cover: {url: 'win_fear_2.jpg', origin: {x: -218, y: 0, width: 250, height: 182}, orientation: 0}}
+        {title: 'Earthworm Jim 2', cover: {url: 'saturn_earthwormjim2.jpg', origin: {x: -209, y: 0, width: 191, height: 267}, orientation: 0}},
+        {title: 'Fighting Vipers', cover: {url: 'saturn_fightingvipers_2_jp.jpg', origin: {x: -202, y: 0, width: 198, height: 276}, orientation: 0}},
+        {title: 'The House of the Dead 2', cover: {url: 'saturn_houseofthedead_2_jp.jpg', origin: {x: -202, y: 0, width: 198, height: 276}, orientation: 0}},
+        {title: 'Panzer Dragoon II Zwei', cover: {url: 'saturn_panzerdragooniizwei_eu.jpg', origin: {x: -202, y: 0, width: 198, height: 276}, orientation: 0}},
+        {title: 'Panzer Dragoon', cover: {url: 'saturn_panzerdragoon_jp.jpg', origin: {x: -211, y: 0, width: 189, height: 169}, orientation: 0}},
+        {title: 'Panzer Dragoon Saga', cover: {url: 'saturn_panzerdragoonsaga_2.jpg', origin: {x: -209, y: 0, width: 191, height: 267}, orientation: 0}},
+        {title: 'Virtua Cop 2', cover: {url: 'saturn_virtuacop2_eu.jpg', origin: {x: -209, y: 0, width: 191, height: 267}, orientation: 0}},
+        {title: 'Virtua Cop', cover: {url: 'saturn_virtuacop.jpg', origin: {x: -209, y: 0, width: 191, height: 267}, orientation: 0}},
+        {title: 'Virtua Fighter 2', cover: {url: 'saturn_virtuafighter2_eu.jpg', origin: {x: -209, y: 0, width: 191, height: 267}, orientation: 0}},
+        {title: 'Donkey Kong Country 2: Diddy\'s Kong Quest', cover: {url: 'snes_dkc2final.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Donkey Kong Country', cover: {url: 'snes_donkeykongcountry.jpg', origin: {x: -214, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'EarthBound', cover: {url: 'snes_earthbound.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Killer Instinct', cover: {url: 'snes_killerinstinct.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Kirby Super Star', cover: {url: 'snes_kirbysuperstar.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Mega Man X2', cover: {url: 'snes_megamanx2.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Mega Man X3', cover: {url: 'snes_megamanx3.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Mega Man X', cover: {url: 'snes_megamanx.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Star Fox', cover: {url: 'snes_starfox_2_jp.jpg', origin: {x: -216, y: 0, width: 184, height: 250}, orientation: 0}},
+        {title: 'Star Fox 2', cover: {url: 'snes-star-fox-2.jpg', origin: {x: 0, y: 0, width: 400, height: 279}, scale: .65, orientation: 0}},
+        {title: 'Super Mario World', cover: {url: 'snes_supermarioworld.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'Super Metroid', cover: {url: 'snes_supermetroid.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'The Legend of Zelda: A Link to the Past', cover: {url: 'snes_thelegendofzeldaalinktothepast.jpg', origin: {x: -216, y: 0, width: 250, height: 184}, orientation: -90}},
+        {title: 'The Legend of Zelda: Breath of the Wild', cover: {url: 'switch_zeldabreathofthewild.jpg', origin: {x: -210, y: 0, width: 190, height: 309}, orientation: 0}},
+        {title: 'Animal Crossing: City Folk', cover: {url: 'wii_animal-crossing-city-folk.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Resident Evil: The Darkside Chronicles', cover: {url: 'wii_residentevilthedarksidechronicles.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Resident Evil: The Umbrella Chronicles', cover: {url: 'wii_residentevilumbrellachronicles.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Nintendo Land', cover: {url: 'wiiu_nintendoland.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Wii Play', cover: {url: 'wii_wiiplay_eu.jpg', origin: {x: -214, y: 0, width: 186, height: 267}, orientation: 0}},
+        {title: 'Wii Sports', cover: {url: 'wii_wiisports_gb.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Wii Sports Resort', cover: {url: 'wii_wii-sports-resort.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Another World', cover: {url: 'win_anotherworld_eu.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Diablo', cover: {url: 'win_diablo_ca.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}},
+        {title: 'Diablo II', cover: {url: 'win_diabloii_2.jpg', origin: {x: -220, y: 0, width: 180, height: 255}, orientation: 0}},
+        {title: 'DOOM', cover: {url: 'win_doom.jpg', origin: {x: -210, y: 0, width: 190, height: 256}, orientation: 0}},
+        {title: 'F.E.A.R.', cover: {url: 'win_fear_2.jpg', origin: {x: -210, y: 0, width: 190, height: 267}, orientation: 0}}
       ]
       library.forEach(media => {
         const cell = document.createElement('li')
@@ -172,6 +176,9 @@
         cover.style['background-position'] = `${media.cover.origin.x}px ${media.cover.origin.y}px`
         if (media.cover.orientation % 360) {
           cover.style['transform'] = `rotate(${media.cover.orientation}deg)`
+        }
+        if (media.cover.scale) {
+          cover.style['transform'] += ` scale(${media.cover.scale})`
         }
         if (media.cover.orientation % 90 === 0 && media.cover.orientation % 360) {
           cover.style.top = `${media.cover.origin.height}px`
