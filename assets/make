@@ -9,6 +9,7 @@ space := $(empty) $(empty)
 .PHONY: all
 all: $(patsubst originals/%,thumbnails/%,$(wildcard originals/*))
 
+# resizing breaks everything
 thumbnails/%: originals/% | thumbnails/
   @convert -strip -quality 90% -resize 400 '$<' '$@'
 
