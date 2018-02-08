@@ -2,52 +2,69 @@
 version: 0.0.0
 imageBaseURL: assets/originals
 thumbnailBaseURL: assets/thumbnails
+template: |
+  <li class=cell>
+    <a class=bar href='assets/originals/{{image[0].url}}'>
+      <div class=media style='width: {{image[0].width}}px; height: {{image[0].height}}px;'>
+        <div
+          class=cover
+          style='background-image: url("assets/originals/{{image[0].url}}"); background-position: {{image[0].x}}px {{image[0].y}}px; width: {{image[0].width}}px; height: {{image[0].height}}px;'></div>
+      </div>
+    </a>
+    <span class=title>
+      <a class=bar href='assets/originals/{{image[0].url}}'>
+        {{title}}
+      </a>
+    </span>
+  </li>
 items:
 - title: Nintendo Entertainment System
+  default:
+    image: {x: -218, width: 182, height: 250}
   items:
   - title: Mega Man 6
     images:
-    - {url: nes_megaman6.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_megaman6.jpg}
     app: app://nautilus
   - title: The Guardian Legend
     images:
-    - {url: nes_theguardianlegend_3.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_theguardianlegend_3.jpg}
   - title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project'
     images:
-    - {url: nes_tmntiiithemanhattanproject.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_tmntiiithemanhattanproject.jpg}
   - title: River City Ransom
     images:
-    - {url: nes_rivercityransom.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_rivercityransom.jpg}
   - title: Solar Jetman
     images:
-    - {url: nes_solarjetman.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_solarjetman.jpg}
   - title: Super Mario Bros. 3
     images:
-    - {url: nes_supermariobros3.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_supermariobros3.jpg}
   - title: Cobra Command
     images:
-    - {url: nes_cobracommand.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_cobracommand.jpg}
   - title: Kirby's Adventure
     images:
-    - {url: nes_kirbysadventure.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_kirbysadventure.jpg}
   - title: Nintendo World Cup
     images:
-    - {url: nes_nintendoworldcup.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_nintendoworldcup.jpg}
   - title: R.C. Pro-Am
     images:
-    - {url: nes_rcproam.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_rcproam.jpg}
   - title: Super Dodge Ball
     images:
-    - {url: nes_superdodgeball.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_superdodgeball.jpg}
   - title: The Punisher
     images:
-    - {url: nes_thepunisher.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_thepunisher.jpg}
   - title: 'Teenage Mutant Ninja Turtles II: The Arcade Game'
     images:
-    - {url: nes_tmnt2arcade.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_tmnt2arcade.jpg}
   - title: Teenage Mutant Ninja Turtles
     images:
-    - {url: nes_TMNT.jpg, x: -218, width: 182, height: 250}
+    - {url: nes_TMNT.jpg}
 - title: Conker's Bad Fur Day
   images:
   - {url: n64_conkersbadfurday.jpg, x: -218, width: 250, height: 182, rotate: -90}
