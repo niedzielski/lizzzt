@@ -1,4 +1,6 @@
 ---
+version: 0.0.0
+items:
 - title: Mega Man 6
   images:
   - url: nes_megaman6.jpg

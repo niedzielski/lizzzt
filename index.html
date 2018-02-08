@@ -70,7 +70,7 @@
       // would prefer thumbnails be consistently sized actually, especially within a system.
       // filter sort reorder
       // todo: url should include assets/thumbnails/?
-      json.forEach(media => {
+      json.items.forEach(media => {
         const cell = document.createElement('li')
         cell.className = 'cell'
         const mediaContainer = document.createElement('div')
