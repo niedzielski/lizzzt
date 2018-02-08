@@ -1,0 +1,13 @@
+---
+version: string # semver
+$schema: item
+
+define imagee
+  url: string?
+  crop?: {x?: number, width?: number, height?: number, rotate?: number}
+
+
+define item
+title?: string
+images?: image[]
+items?: item[]
