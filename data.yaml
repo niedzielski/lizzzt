@@ -4,15 +4,15 @@ imageBaseURL: assets/originals
 thumbnailBaseURL: assets/thumbnails
 template: |
   <li class=cell>
-    <a class=bar href='assets/originals/{{image[0].url}}'>
-      <div class=media style='width: {{image[0].width}}px; height: {{image[0].height}}px;'>
+    <a class=bar href='assets/originals/{{images.0.url}}'>
+      <div class=media style='width: {{images.0.width}}px; height: {{images.0.height}}px;'>
         <div
           class=cover
-          style='background-image: url("assets/originals/{{image[0].url}}"); background-position: {{image[0].x}}px {{image[0].y}}px; width: {{image[0].width}}px; height: {{image[0].height}}px;'></div>
+          style='background-image: url("assets/originals/{{images.0.url}}"); background-position: {{images.0.x}}px {{images.0.y}}px; width: {{images.0.width}}px; height: {{images.0.height}}px;'></div>
       </div>
     </a>
     <span class=title>
-      <a class=bar href='assets/originals/{{image[0].url}}'>
+      <a class=bar href='assets/originals/{{images.0.url}}'>
         {{title}}
       </a>
     </span>

@@ -57,12 +57,8 @@
     <ul class=content>
     </ul>
     <script src=node_modules/js-yaml/dist/js-yaml.min.js></script>
+    <script src=node_modules/mustache/mustache.min.js></script>
     <script>
-      function format(template, item) {
-        return Object.keys(item)
-          .reduce((str, key) => str.replace(new RegExp(`{{${key}}}`, 'g'), item[key]), template)
-      }
-
       fetch('data.yaml')
         .then(response => response.text())
         .then(jsyaml.safeLoad)
@@ -82,7 +78,7 @@
         console.log(base)
         thing.items.forEach(media => {
           if (media.items) return amazing(media)
-          console.log(format(json.template, media))
+          console.log(Mustache.render(json.template, media))
           const cell = document.createElement('li')
           cell.className = 'cell'
           const mediaContainer = document.createElement('div')
