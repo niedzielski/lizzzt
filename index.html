@@ -81,7 +81,7 @@
           const anchor = document.createElement('a')
           cell.appendChild(anchor)
           anchor.className = 'bar'
-          anchor.href = media.app ? media.app : `assets/originals/${media.images[0].url}`
+          anchor.href = media.app ? media.app : `${json.imageBaseURL || ''}/${media.images[0].url}`
           // trying to figure  out how to create an element inline and grow it
           // underneath another element so i can have a form thing where you keep
           // all the ui
@@ -96,27 +96,27 @@
           textAnchor.appendChild(document.createTextNode(media.title))
           text.appendChild(textAnchor)
           text.className = 'title'
-          text.style.width = `${media.images[0].crop.width}px`
+          text.style.width = `${media.images[0].width}px`
           cell.appendChild(text)
           cover.className = 'cover'
-          cover.style['background-image'] = `url(assets/thumbnails/${media.images[0].url})`
-          cover.style['background-position'] = `${media.images[0].crop.x || 0}px ${media.images[0].crop.y || 0}px`
-          if (media.images[0].crop.rotate % 360) {
-            cover.style['transform'] = `rotate(${media.images[0].crop.rotate}deg)`
+          cover.style['background-image'] = `url(${json.thumbnailBaseURL || ''}/${media.images[0].url})`
+          cover.style['background-position'] = `${media.images[0].x || 0}px ${media.images[0].y || 0}px`
+          if (media.images[0].rotate % 360) {
+            cover.style['transform'] = `rotate(${media.images[0].rotate}deg)`
           }
           if (media.images[0].scale) {
             cover.style['transform'] += ` scale(${media.images[0].scale})`
           }
-          if (media.images[0].crop.rotate % 90 === 0 && media.images[0].crop.rotate % 360) {
-            cover.style.top = `${media.images[0].crop.height}px`
-            cover.style.width = `${media.images[0].crop.height}px`
-            cover.style.height = `${media.images[0].crop.width}px`
+          if (media.images[0].rotate % 90 === 0 && media.images[0].rotate % 360) {
+            cover.style.top = `${media.images[0].height}px`
+            cover.style.width = `${media.images[0].height}px`
+            cover.style.height = `${media.images[0].width}px`
           } else {
-            cover.style.width = `${media.images[0].crop.width}px`
-            cover.style.height = `${media.images[0].crop.height}px`
+            cover.style.width = `${media.images[0].width}px`
+            cover.style.height = `${media.images[0].height}px`
           }
-          mediaContainer.style.width = `${media.images[0].crop.width}px`
-          mediaContainer.style.height = `${media.images[0].crop.height}px`
+          mediaContainer.style.width = `${media.images[0].width}px`
+          mediaContainer.style.height = `${media.images[0].height}px`
           document.querySelector('.content').appendChild(cell)
         })
       }
