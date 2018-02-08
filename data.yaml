@@ -2,341 +2,341 @@
 - title: Mega Man 6
   images:
   - url: nes_megaman6.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
   app: app://nautilus
 - title: The Guardian Legend
   images:
   - url: nes_theguardianlegend_3.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: 'Teenage Mutant Ninja Turtles III: The Manhattan Project'
   images:
   - url: nes_tmntiiithemanhattanproject.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: River City Ransom
   images:
   - url: nes_rivercityransom.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Solar Jetman
   images:
   - url: nes_solarjetman.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Super Mario Bros. 3
   images:
   - url: nes_supermariobros3.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Conker's Bad Fur Day
   images:
   - url: n64_conkersbadfurday.jpg
-    crop: {x: -218, y: 0, width: 250, height: 182, orientation: -90}
+    crop: {x: -218, width: 250, height: 182, orientation: -90}
 - title: The Last of Us Remastered
   images:
   - url: ps4_lastofusremastered.jpg
-    crop: {x: -211, y: 0, width: 189, height: 236, orientation: 0}
+    crop: {x: -211, width: 189, height: 236}
 - title: Soul Calibur
   images:
   - url: dc_soulcalibur_jp_back.jpg
-    crop: {x: -15, y: 0, width: 369, height: 314, orientation: 0}
+    crop: {x: -15, width: 369, height: 314}
 - title: The House of the Dead 2
   images:
   - url: dc_thehouseofthedead2_5.jpg
-    crop: {x: -210, y: 0, width: 190, height: 170, orientation: 0}
+    crop: {x: -210, width: 190, height: 170}
 - title: The Typing of the Dead
   images:
   - url: dc_typingofthedead_2.jpg
-    crop: {x: -210, y: 0, width: 190, height: 170, orientation: 0}
+    crop: {x: -210, width: 190, height: 170}
 - title: New Super Mario Bros.
   images:
   - url: ds_newsupermariobros.jpg
-    crop: {x: -213, y: 0, width: 187, height: 168, orientation: 0}
+    crop: {x: -213, width: 187, height: 168}
 - title: Kirby's Dreamland 2
   images:
   - url: gb_kirbysdreamland2.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Kirby's Dreamland
   images:
   - url: gb_kirbysdreamland.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Kirby's Pinball Land
   images:
   - url: gb_kirbyspinballland.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: 'Metroid II: Return of Samus'
   images:
   - url: gb_metroidiireturnofsamus.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: 'Super Mario Land 2: 6 Golden Coins'
   images:
   - url: gb_supermarioland2sixgoldencoins.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Super Mario Land
   images:
   - url: gb_supermarioland.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Super R.C. Pro-Am
   images:
   - url: gb_superrcproam.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: 'Teenage Mutant Ninja Turtles: Fall of the Foot Clan'
   images:
   - url: gb_teenagemutantninjaturtlesfallofthefootclan.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Tetris
   images:
   - url: gb_tetris.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Wario Land II
   images:
   - url: gb_wariolandii.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: 'Wario Land: Super Mario Land 3'
   images:
   - url: gb_wariolandsupermarioland3.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: 'Metal Gear Solid: The Twin Snakes'
   images:
   - url: gc_metalgearsolidthetwinsnakes.jpg
-    crop: {x: -211, y: 0, width: 189, height: 267, orientation: 0}
+    crop: {x: -211, width: 189, height: 267}
 - title: Viewtiful Joe
   images:
   - url: gc_viewtifuljoe.jpg
-    crop: {x: -211, y: 0, width: 189, height: 267, orientation: 0}
+    crop: {x: -211, width: 189, height: 267}
 - title: GoldenEye 007
   images:
   - url: label_n64_007goldeneye_eu.jpg
-    crop: {x: 0, y: 0, width: 400, height: 459}
+    crop: {x: 0, width: 400, height: 459}
     scale: 0.5
     orientation: 0
 - title: 'The Legend of Zelda: Ocarina of Time'
   images:
   - url: n64_legendofzeldaocarinaoftimeplayerschoice.jpg
-    crop: {x: -218, y: 0, width: 250, height: 182, orientation: -90}
+    crop: {x: -218, width: 250, height: 182, orientation: -90}
 - title: 'The Legend of Zelda: Majora''s Mask'
   images:
   - url: n64_thelegendofzeldamajorasmask.jpg
-    crop: {x: -218, y: 0, width: 250, height: 182, orientation: -90}
+    crop: {x: -218, width: 250, height: 182, orientation: -90}
 - title: Cobra Command
   images:
   - url: nes_cobracommand.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Kirby's Adventure
   images:
   - url: nes_kirbysadventure.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Nintendo World Cup
   images:
   - url: nes_nintendoworldcup.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: R.C. Pro-Am
   images:
   - url: nes_rcproam.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Super Dodge Ball
   images:
   - url: nes_superdodgeball.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: The Punisher
   images:
   - url: nes_thepunisher.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: 'Teenage Mutant Ninja Turtles II: The Arcade Game'
   images:
   - url: nes_tmnt2arcade.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: Teenage Mutant Ninja Turtles
   images:
   - url: nes_TMNT.jpg
-    crop: {x: -218, y: 0, width: 182, height: 250, orientation: 0}
+    crop: {x: -218, width: 182, height: 250}
 - title: The Pinball of the Dead
   images:
   - url: pinballofthedead.jpg
-    crop: {x: -212, y: 0, width: 188, height: 168, orientation: 0}
+    crop: {x: -212, width: 188, height: 168}
 - title: Final Fantasy 7
   images:
   - url: ps1_finalfantasy7_front_eu.jpg
-    crop: {x: -17, y: 0, width: 365, height: 312, orientation: 0}
+    crop: {x: -17, width: 365, height: 312}
 - title: Heart of Darkness
   images:
   - url: ps1_heartofdarkness.jpg
-    crop: {x: -208, y: 0, width: 192, height: 170, orientation: 0}
+    crop: {x: -208, width: 192, height: 170}
 - title: Metal Gear Solid
   images:
   - url: ps1_metalgearsolid_5.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: 'Grand Theft Auto: Vice City'
   images:
   - url: ps2_gtavicecity.jpg
-    crop: {x: -212, y: 0, width: 188, height: 267, orientation: 0}
+    crop: {x: -212, width: 188, height: 267}
 - title: Katamari Damacy
   images:
   - url: ps2_katamaridamacy.jpg
-    crop: {x: -211, y: 0, width: 188, height: 267, orientation: 0}
+    crop: {x: -211, width: 188, height: 267}
 - title: 'Twisted Metal: Black'
   images:
   - url: ps2_twistedmetalblack.jpg
-    crop: {x: -212, y: 0, width: 188, height: 267, orientation: 0}
+    crop: {x: -212, width: 188, height: 267}
 - title: We ♥ Katamari
   images:
   - url: ps2_welovekatamari.jpg
-    crop: {x: -212, y: 0, width: 188, height: 267, orientation: 0}
+    crop: {x: -212, width: 188, height: 267}
 - title: Katamari Forever
   images:
   - url: ps3_katamariforever_3.jpg
-    crop: {x: -210, y: 0, width: 190, height: 218, orientation: 0}
+    crop: {x: -210, width: 190, height: 218}
 - title: 'Metal Gear Solid: The Legacy Collection'
   images:
   - url: ps3_metalgearsolidthelegacycollection.jpg
-    crop: {x: -210, y: 0, width: 190, height: 218, orientation: 0}
+    crop: {x: -210, width: 190, height: 218}
 - title: Journey Collector's Edition
   images:
   - url: ps4_journeycollectorsedition_eu.jpg
-    crop: {x: -211, y: 0, width: 189, height: 236, orientation: 0}
+    crop: {x: -211, width: 189, height: 236}
 - title: 'Castlevania: Symphony of the Night'
   images:
   - url: ps_castlevaniasymphonyofthenight.jpg
-    crop: {x: -211, y: 0, width: 189, height: 267, orientation: 0}
+    crop: {x: -211, width: 189, height: 267}
 - title: Retro City Rampage
   images:
   - url: pc_retrocityrampage.jpg
-    crop: {x: -209, y: -56, width: 158, height: 223, orientation: 0}
+    crop: {x: -209, y: -56, width: 158, height: 223}
 - title: Earthworm Jim 2
   images:
   - url: saturn_earthwormjim2.jpg
-    crop: {x: -209, y: 0, width: 191, height: 267, orientation: 0}
+    crop: {x: -209, width: 191, height: 267}
 - title: Fighting Vipers
   images:
   - url: saturn_fightingvipers_2_jp.jpg
-    crop: {x: -202, y: 0, width: 198, height: 276, orientation: 0}
+    crop: {x: -202, width: 198, height: 276}
 - title: The House of the Dead 2
   images:
   - url: saturn_houseofthedead_2_jp.jpg
-    crop: {x: -202, y: 0, width: 198, height: 276, orientation: 0}
+    crop: {x: -202, width: 198, height: 276}
 - title: Panzer Dragoon II Zwei
   images:
   - url: saturn_panzerdragooniizwei_eu.jpg
-    crop: {x: -202, y: 0, width: 198, height: 276, orientation: 0}
+    crop: {x: -202, width: 198, height: 276}
 - title: Panzer Dragoon
   images:
   - url: saturn_panzerdragoon_jp.jpg
-    crop: {x: -211, y: 0, width: 189, height: 169, orientation: 0}
+    crop: {x: -211, width: 189, height: 169}
 - title: Panzer Dragoon Saga
   images:
   - url: saturn_panzerdragoonsaga_2.jpg
-    crop: {x: -209, y: 0, width: 191, height: 267, orientation: 0}
+    crop: {x: -209, width: 191, height: 267}
 - title: Virtua Cop 2
   images:
   - url: saturn_virtuacop2_eu.jpg
-    crop: {x: -209, y: 0, width: 191, height: 267, orientation: 0}
+    crop: {x: -209, width: 191, height: 267}
 - title: Virtua Cop
   images:
   - url: saturn_virtuacop.jpg
-    crop: {x: -209, y: 0, width: 191, height: 267, orientation: 0}
+    crop: {x: -209, width: 191, height: 267}
 - title: Virtua Fighter 2
   images:
   - url: saturn_virtuafighter2_eu.jpg
-    crop: {x: -209, y: 0, width: 191, height: 267, orientation: 0}
+    crop: {x: -209, width: 191, height: 267}
 - title: 'Donkey Kong Country 2: Diddy''s Kong Quest'
   images:
   - url: snes_dkc2final.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Donkey Kong Country
   images:
   - url: snes_donkeykongcountry.jpg
-    crop: {x: -214, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -214, width: 250, height: 184, orientation: -90}
 - title: EarthBound
   images:
   - url: snes_earthbound.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Killer Instinct
   images:
   - url: snes_killerinstinct.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Kirby Super Star
   images:
   - url: snes_kirbysuperstar.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Mega Man X2
   images:
   - url: snes_megamanx2.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Mega Man X3
   images:
   - url: snes_megamanx3.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Mega Man X
   images:
   - url: snes_megamanx.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Star Fox
   images:
   - url: snes_starfox_2_jp.jpg
-    crop: {x: -216, y: 0, width: 184, height: 250, orientation: 0}
+    crop: {x: -216, width: 184, height: 250}
 - title: Star Fox 2
   images:
   - url: snes-star-fox-2.jpg
-    crop: {x: 0, y: 0, width: 400, height: 279}
+    crop: {x: 0, width: 400, height: 279}
     scale: 0.65
     orientation: 0
 - title: Super Mario World
   images:
   - url: snes_supermarioworld.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: Super Metroid
   images:
   - url: snes_supermetroid.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: 'The Legend of Zelda: A Link to the Past'
   images:
   - url: snes_thelegendofzeldaalinktothepast.jpg
-    crop: {x: -216, y: 0, width: 250, height: 184, orientation: -90}
+    crop: {x: -216, width: 250, height: 184, orientation: -90}
 - title: 'The Legend of Zelda: Breath of the Wild'
   images:
   - url: switch_zeldabreathofthewild.jpg
-    crop: {x: -210, y: 0, width: 190, height: 309, orientation: 0}
+    crop: {x: -210, width: 190, height: 309}
 - title: 'Animal Crossing: City Folk'
   images:
   - url: wii_animal-crossing-city-folk.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: 'Resident Evil: The Darkside Chronicles'
   images:
   - url: wii_residentevilthedarksidechronicles.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: 'Resident Evil: The Umbrella Chronicles'
   images:
   - url: wii_residentevilumbrellachronicles.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: Nintendo Land
   images:
   - url: wiiu_nintendoland.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: Wii Play
   images:
   - url: wii_wiiplay_eu.jpg
-    crop: {x: -214, y: 0, width: 186, height: 267, orientation: 0}
+    crop: {x: -214, width: 186, height: 267}
 - title: Wii Sports
   images:
   - url: wii_wiisports_gb.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: Wii Sports Resort
   images:
   - url: wii_wii-sports-resort.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: Another World
   images:
   - url: win_anotherworld_eu.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: Diablo
   images:
   - url: win_diablo_ca.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}
 - title: Diablo II
   images:
   - url: win_diabloii_2.jpg
-    crop: {x: -220, y: 0, width: 180, height: 255, orientation: 0}
+    crop: {x: -220, width: 180, height: 255}
 - title: DOOM
   images:
   - url: win_doom.jpg
-    crop: {x: -210, y: 0, width: 190, height: 256, orientation: 0}
+    crop: {x: -210, width: 190, height: 256}
 - title: F.E.A.R.
   images:
   - url: win_fear_2.jpg
-    crop: {x: -210, y: 0, width: 190, height: 267, orientation: 0}
+    crop: {x: -210, width: 190, height: 267}

@@ -97,7 +97,7 @@
         cell.appendChild(text)
         cover.className = 'cover'
         cover.style['background-image'] = `url(assets/thumbnails/${media.images[0].url})`
-        cover.style['background-position'] = `${media.images[0].crop.x}px ${media.images[0].crop.y}px`
+        cover.style['background-position'] = `${media.images[0].crop.x}px ${media.images[0].crop.y || 0}px`
         if (media.images[0].crop.orientation % 360) {
           cover.style['transform'] = `rotate(${media.images[0].crop.orientation}deg)`
         }
