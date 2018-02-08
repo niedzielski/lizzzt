@@ -70,53 +70,57 @@
       // would prefer thumbnails be consistently sized actually, especially within a system.
       // filter sort reorder
       // todo: url should include assets/thumbnails/?
-      json.items.forEach(media => {
-        const cell = document.createElement('li')
-        cell.className = 'cell'
-        const mediaContainer = document.createElement('div')
-        mediaContainer.className = 'media'
-        const anchor = document.createElement('a')
-        cell.appendChild(anchor)
-        anchor.className = 'bar'
-        anchor.href = media.app ? media.app : `assets/originals/${media.images[0].url}`
-        // trying to figure  out how to create an element inline and grow it
-        // underneath another element so i can have a form thing where you keep
-        // all the ui
-        // anchor.onclick = () => {
-        //   document
-        // }
-        const cover = document.createElement('div')
-        const textAnchor = anchor.cloneNode()
-        mediaContainer.appendChild(cover)
-        anchor.appendChild(mediaContainer)
-        const text = document.createElement('span')
-        textAnchor.appendChild(document.createTextNode(media.title))
-        text.appendChild(textAnchor)
-        text.className = 'title'
-        text.style.width = `${media.images[0].crop.width}px`
-        cell.appendChild(text)
-        cover.className = 'cover'
-        cover.style['background-image'] = `url(assets/thumbnails/${media.images[0].url})`
-        cover.style['background-position'] = `${media.images[0].crop.x || 0}px ${media.images[0].crop.y || 0}px`
-        if (media.images[0].crop.rotate % 360) {
-          cover.style['transform'] = `rotate(${media.images[0].crop.rotate}deg)`
-        }
-        if (media.images[0].scale) {
-          cover.style['transform'] += ` scale(${media.images[0].scale})`
-        }
-        if (media.images[0].crop.rotate % 90 === 0 && media.images[0].crop.rotate % 360) {
-          cover.style.top = `${media.images[0].crop.height}px`
-          cover.style.width = `${media.images[0].crop.height}px`
-          cover.style.height = `${media.images[0].crop.width}px`
-        } else {
-          cover.style.width = `${media.images[0].crop.width}px`
-          cover.style.height = `${media.images[0].crop.height}px`
-        }
-        mediaContainer.style.width = `${media.images[0].crop.width}px`
-        mediaContainer.style.height = `${media.images[0].crop.height}px`
-        document.querySelector('.content').appendChild(cell)
-      })
+      function amazing (items) {
+        items.forEach(media => {
+          if (media.items) return amazing(media.items)
+          const cell = document.createElement('li')
+          cell.className = 'cell'
+          const mediaContainer = document.createElement('div')
+          mediaContainer.className = 'media'
+          const anchor = document.createElement('a')
+          cell.appendChild(anchor)
+          anchor.className = 'bar'
+          anchor.href = media.app ? media.app : `assets/originals/${media.images[0].url}`
+          // trying to figure  out how to create an element inline and grow it
+          // underneath another element so i can have a form thing where you keep
+          // all the ui
+          // anchor.onclick = () => {
+          //   document
+          // }
+          const cover = document.createElement('div')
+          const textAnchor = anchor.cloneNode()
+          mediaContainer.appendChild(cover)
+          anchor.appendChild(mediaContainer)
+          const text = document.createElement('span')
+          textAnchor.appendChild(document.createTextNode(media.title))
+          text.appendChild(textAnchor)
+          text.className = 'title'
+          text.style.width = `${media.images[0].crop.width}px`
+          cell.appendChild(text)
+          cover.className = 'cover'
+          cover.style['background-image'] = `url(assets/thumbnails/${media.images[0].url})`
+          cover.style['background-position'] = `${media.images[0].crop.x || 0}px ${media.images[0].crop.y || 0}px`
+          if (media.images[0].crop.rotate % 360) {
+            cover.style['transform'] = `rotate(${media.images[0].crop.rotate}deg)`
+          }
+          if (media.images[0].scale) {
+            cover.style['transform'] += ` scale(${media.images[0].scale})`
+          }
+          if (media.images[0].crop.rotate % 90 === 0 && media.images[0].crop.rotate % 360) {
+            cover.style.top = `${media.images[0].crop.height}px`
+            cover.style.width = `${media.images[0].crop.height}px`
+            cover.style.height = `${media.images[0].crop.width}px`
+          } else {
+            cover.style.width = `${media.images[0].crop.width}px`
+            cover.style.height = `${media.images[0].crop.height}px`
+          }
+          mediaContainer.style.width = `${media.images[0].crop.width}px`
+          mediaContainer.style.height = `${media.images[0].crop.height}px`
+          document.querySelector('.content').appendChild(cell)
         })
+      }
+      amazing(json.items)
+    })
     </script>
   </body>
 </html>
