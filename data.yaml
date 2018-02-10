@@ -2,7 +2,7 @@
 version: 0.0.0
 imageBaseURL: assets/originals
 thumbnailBaseURL: assets/thumbnails
-template: |
+template: | # todo: this could use array syntax and be an entire html file
   <li class=cell>
     <a class=bar href='assets/originals/{{images.0.url}}'>
       <div class=media style='width: {{images.0.width}}px; height: {{images.0.height}}px;'>
