@@ -32,18 +32,19 @@
       }
       .cell {
         justify-self: center;
-      }
-      .media {
+        text-align: center;
       }
       .title {
         display: block;
         padding: var(--half-space);
         font-weight: 550;
-        text-align: center;
+        color: black;
+        text-decoration: none;
       }
-      .title > a {color: black; text-decoration: none;}
-      .cover {
+      .cover-container {
         display: inline-block;
+      }
+      .cover {
         background-repeat: no-repeat;
         position: relative;
         transform-origin: 0 0;
@@ -52,10 +53,28 @@
       }
     </style>
     <link rel=import href=data.yaml id=list>
+    <script type=x-template id=cell-template>
+      <li class=cell>
+        <div class=cover-container
+          style='width: {{images.0.width}}px; height: {{images.0.height}}px;'>
+          <a href='assets/originals/{{images.0.url}}'>
+            <div
+              class=cover
+              style='
+                background-image: url("assets/thumbnails/{{images.0.url}}");
+                background-position: {{images.0.x}}px {{images.0.y}}px;
+                transform: rotate({{images.0.rotate}}deg) scale({{images.0.scale}});
+                top: {{images.0.top}}px;
+                width: {{images.0.width}}px;
+                height: {{images.0.height}}px;'></div>
+          </a>
+        </div>
+        <a class=title href='assets/originals/{{images.0.url}}'>{{title}}</a>
+      </li>
+    </script>
   </head>
   <body>
-    <ul class=content>
-    </ul>
+    <ul class=content></ul>
     <script src=../node_modules/js-yaml/dist/js-yaml.min.js></script>
     <script src=../node_modules/mustache/mustache.min.js></script>
     <script>
@@ -73,57 +92,26 @@
       // todo: url should include assets/thumbnails/?
       // program, webpage, data, vcs-data
       // keep honing the dsl. separate the library
-      const template = (json.template || '')
+      const template = document.getElementById('cell-template').textContent
+      const cell = document.createElement('template')
       function amazing (thing) {
         const base = Object.assign({url: '', x: 0, y: 0, width: 1, height: 1, rotate: 0, scale: 1}, thing.default && thing.default.image)
-        console.log(base)
         thing.items.forEach(media => {
           if (media.items) return amazing(media)
-          console.log(Mustache.render(json.template, media))
-          const cell = document.createElement('li')
-          cell.className = 'cell'
-          const mediaContainer = document.createElement('div')
-          mediaContainer.className = 'media'
-          const anchor = document.createElement('a')
-          cell.appendChild(anchor)
-          anchor.className = 'bar'
-          anchor.href = media.app ? media.app : `${json.imageBaseURL || ''}/${media.images[0].url}`
+          // anchor.href = media.app ? media.app : `${json.imageBaseURL || ''}/${media.images[0].url}`
           // trying to figure  out how to create an element inline and grow it
           // underneath another element so i can have a form thing where you keep
           // all the ui
           // anchor.onclick = () => {
           //   document
           // }
-          const cover = document.createElement('div')
-          const textAnchor = anchor.cloneNode()
-          mediaContainer.appendChild(cover)
-          anchor.appendChild(mediaContainer)
-          const text = document.createElement('span')
-          textAnchor.appendChild(document.createTextNode(media.title))
-          text.appendChild(textAnchor)
-          text.className = 'title'
-          text.style.width = `${media.images[0].width}px`
-          cell.appendChild(text)
-          cover.className = 'cover'
-          cover.style['background-image'] = `url(${json.thumbnailBaseURL || ''}/${media.images[0].url})`
-          cover.style['background-position'] = `${media.images[0].x || base.x}px ${media.images[0].y || base.y}px`
-          if (media.images[0].rotate % 360) {
-            cover.style['transform'] = `rotate(${media.images[0].rotate || base.rotate}deg)`
-          }
-          if (media.images[0].scale) {
-            cover.style['transform'] += ` scale(${media.images[0].scale || base.scale})`
-          }
-          if (media.images[0].rotate % 90 === 0 && media.images[0].rotate % 360) {
-            cover.style.top = `${media.images[0].height || base.height}px`
-            cover.style.width = `${media.images[0].height || base.width}px`
-            cover.style.height = `${media.images[0].width || base.width}px`
-          } else {
-            cover.style.width = `${media.images[0].width || base.width}px`
-            cover.style.height = `${media.images[0].height || base.height}px`
-          }
-          mediaContainer.style.width = `${media.images[0].width || base.width}px`
-          mediaContainer.style.height = `${media.images[0].height || base.height}px`
-          document.querySelector('.content').appendChild(cell)
+          const itemmm = Object.assign({}, media, {images: media.images.map(image => {
+            const i = Object.assign({}, base, image)
+            i.top = i.rotate % 90 === 0 && i.rotate % 360 ? i.height : 0
+            return i
+          })})
+          cell.innerHTML = Mustache.render(template, itemmm)
+          document.querySelector('.content').appendChild(cell.content)
         })
       }
       amazing(json)

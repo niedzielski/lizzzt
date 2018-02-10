@@ -2,21 +2,6 @@
 version: 0.0.0
 imageBaseURL: assets/originals
 thumbnailBaseURL: assets/thumbnails
-template: | # todo: this could use array syntax and be an entire html file
-  <li class=cell>
-    <a class=bar href='assets/originals/{{images.0.url}}'>
-      <div class=media style='width: {{images.0.width}}px; height: {{images.0.height}}px;'>
-        <div
-          class=cover
-          style='background-image: url("assets/originals/{{images.0.url}}"); background-position: {{images.0.x}}px {{images.0.y}}px; width: {{images.0.width}}px; height: {{images.0.height}}px;'></div>
-      </div>
-    </a>
-    <span class=title>
-      <a class=bar href='assets/originals/{{images.0.url}}'>
-        {{title}}
-      </a>
-    </span>
-  </li>
 items:
 - title: Nintendo Entertainment System
   default:
@@ -67,7 +52,7 @@ items:
     - {url: nes_TMNT.jpg}
 - title: Conker's Bad Fur Day
   images:
-  - {url: n64_conkersbadfurday.jpg, x: -218, width: 250, height: 182, rotate: -90}
+  - {url: n64_conkersbadfurday.jpg, x: -218, width: 182, height: 250, rotate: -90}
 - title: The Last of Us Remastered
   images:
   - {url: ps4_lastofusremastered.jpg, x: -211, width: 189, height: 236}
@@ -127,10 +112,10 @@ items:
   - {url: label_n64_007goldeneye_eu.jpg, width: 400, height: 459, scale: .5}
 - title: 'The Legend of Zelda: Ocarina of Time'
   images:
-  - {url: n64_legendofzeldaocarinaoftimeplayerschoice.jpg, x: -218, width: 250, height: 182, rotate: -90}
+  - {url: n64_legendofzeldaocarinaoftimeplayerschoice.jpg, x: -218, width: 182, height: 250, rotate: -90}
 - title: 'The Legend of Zelda: Majora''s Mask'
   images:
-  - {url: n64_thelegendofzeldamajorasmask.jpg, x: -218, width: 250, height: 182, rotate: -90}
+  - {url: n64_thelegendofzeldamajorasmask.jpg, x: -218, width: 182, height: 250, rotate: -90}
 - title: The Pinball of the Dead
   images:
   - {url: pinballofthedead.jpg, x: -212, width: 188, height: 168}
@@ -202,28 +187,28 @@ items:
   - {url: saturn_virtuafighter2_eu.jpg, x: -209, width: 191, height: 267}
 - title: 'Donkey Kong Country 2: Diddy''s Kong Quest'
   images:
-  - {url: snes_dkc2final.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_dkc2final.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Donkey Kong Country
   images:
-  - {url: snes_donkeykongcountry.jpg, x: -214, width: 250, height: 184, rotate: -90}
+  - {url: snes_donkeykongcountry.jpg, x: -214, width: 184, height: 250, rotate: -90}
 - title: EarthBound
   images:
-  - {url: snes_earthbound.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_earthbound.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Killer Instinct
   images:
-  - {url: snes_killerinstinct.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_killerinstinct.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Kirby Super Star
   images:
-  - {url: snes_kirbysuperstar.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_kirbysuperstar.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Mega Man X2
   images:
-  - {url: snes_megamanx2.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_megamanx2.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Mega Man X3
   images:
-  - {url: snes_megamanx3.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_megamanx3.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Mega Man X
   images:
-  - {url: snes_megamanx.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_megamanx.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Star Fox
   images:
   - {url: snes_starfox_2_jp.jpg, x: -216, width: 184, height: 250}
@@ -232,13 +217,13 @@ items:
   - {url: snes-star-fox-2.jpg, width: 400, height: 279, scale: .65}
 - title: Super Mario World
   images:
-  - {url: snes_supermarioworld.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_supermarioworld.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: Super Metroid
   images:
-  - {url: snes_supermetroid.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_supermetroid.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: 'The Legend of Zelda: A Link to the Past'
   images:
-  - {url: snes_thelegendofzeldaalinktothepast.jpg, x: -216, width: 250, height: 184, rotate: -90}
+  - {url: snes_thelegendofzeldaalinktothepast.jpg, x: -216, width: 184, height: 250, rotate: -90}
 - title: 'The Legend of Zelda: Breath of the Wild'
   images:
   - {url: switch_zeldabreathofthewild.jpg, x: -210, width: 190, height: 309}
