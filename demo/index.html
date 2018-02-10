@@ -34,9 +34,10 @@
         justify-self: center;
         text-align: center;
       }
+      .titlebox {
+        margin-top: calc(var(--space) / 4);
+      }
       .title {
-        display: block;
-        padding: var(--half-space);
         font-weight: 550;
         color: black;
         text-decoration: none;
@@ -55,21 +56,23 @@
     <link rel=import href=data.yaml id=list>
     <script type=x-template id=cell-template>
       <li class=cell>
-        <div class=cover-container
-          style='width: {{images.0.width}}px; height: {{images.0.height}}px;'>
-          <a href='assets/originals/{{images.0.url}}'>
-            <div
-              class=cover
-              style='
-                background-image: url("assets/thumbnails/{{images.0.url}}");
-                background-position: {{images.0.x}}px {{images.0.y}}px;
-                transform: rotate({{images.0.rotate}}deg) scale({{images.0.scale}});
-                top: {{images.0.top}}px;
-                width: {{images.0.width}}px;
-                height: {{images.0.height}}px;'></div>
-          </a>
+        <a href='assets/originals/{{images.0.url}}'>
+          <div class=cover-container
+            style='width: {{images.0.containerwidth}}px; height: {{images.0.containerheight}}px;'>
+              <div
+                class=cover
+                style='
+                  background-image: url("assets/thumbnails/{{images.0.url}}");
+                  background-position: {{images.0.x}}px {{images.0.y}}px;
+                  transform: rotate({{images.0.rotate}}deg) scale({{images.0.scale}});
+                  top: {{images.0.top}}px;
+                  width: {{images.0.width}}px;
+                  height: {{images.0.height}}px;'></div>
+          </div>
+        </a>
+        <div class=titlebox>
+          <a class=title href='assets/originals/{{images.0.url}}'>{{title}}</a>
         </div>
-        <a class=title href='assets/originals/{{images.0.url}}'>{{title}}</a>
       </li>
     </script>
   </head>
@@ -107,7 +110,10 @@
           // }
           const itemmm = Object.assign({}, media, {images: media.images.map(image => {
             const i = Object.assign({}, base, image)
-            i.top = i.rotate % 90 === 0 && i.rotate % 360 ? i.height : 0
+            const rotated = i.rotate % 90 === 0 && i.rotate % 360
+            i.top = rotated ? i.width : 0
+            i.containerwidth = rotated ? i.height : i.width
+            i.containerheight = rotated ? i.width : i.height
             return i
           })})
           cell.innerHTML = Mustache.render(template, itemmm)
