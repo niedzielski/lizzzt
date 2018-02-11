@@ -53,7 +53,6 @@
         box-shadow: .5px .5px 1px 1px rgba(0, 0, 0, .15);
       }
     </style>
-    <link rel=import href=data.yaml id=list>
     <script type=x-template id=cell-template>
       <li class=cell>
         <a href='assets/originals/{{images.0.url}}'>
@@ -81,14 +80,14 @@
   </head>
   <body>
     <ul class=content></ul>
-    <script src=http://localhost:8080/lizzzt.js defer></script>
-    <script defer>
-      fetch('data.yaml')
+    <script src=http://localhost:8080/lizzzt.js></script>
+    <script>
+      fetch('data.yaml', {headers: {contentType: 'application/x-yaml'}})
         .then(response => response.text())
         .then(yaml => {
           const root = document.querySelector('.content')
           const template = document.getElementById('cell-template').textContent
-          return lizzzt.render(root, template, yaml)
+          lizzzt.render(root, template, yaml)
         })
     </script>
   </body>
