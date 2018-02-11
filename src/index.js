@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const jsyaml = require('js-yaml')
 const mustache = require('mustache')
 
@@ -14,27 +15,31 @@ function renderer(container, template) {
   }
 }
 
-function renderTransform(root, renderer, transform) {
+function renderTransform(base, root, renderer, transform) {
+  base = _.merge({}, base, root.default)
   root.items.forEach(item => {
-    const transformed = transform(item)
-    renderer.render(transformed)
-    if (transformed.items) iterate(transformed, cell, transform)
+    const result = mergeDefault(base, transform(base, item))
+    renderer.render(result)
+    if (result.items) renderTransform(base, result, renderer, transform)
   })
 }
 
+
 function iterate(container, template, yaml, transform) {
   const json = jsyaml.safeLoad(yaml)
-  renderTransform(json, renderer(container, template), transform)
+  renderTransform({}, json, renderer(container, template), transform)
 }
 
+function mergeDefault(base, item) {
+  if (_.isObject(item)) return _.merge({}, base, item)
+  return item || base
+}
 
-function identityTransform(item) { return item }
-
+function identity(base, item) { return item }
 
 export function simple(container, template, yaml) {
-  iterate(container, template, yaml, identityTransform)
+  iterate(container, template, yaml, identity)
 }
-
 
 // components can only be virtualized if you know their widths ahead of time so no autosizing (but preprocessing is possible)
 // data file, webpage, blob of js (embedded on that webpage), git versioning. if i had file system access, would this be easy?
@@ -55,24 +60,15 @@ export function simple(container, template, yaml) {
 // }
 
 
-export function render(root, template, yaml) {
-  const json = jsyaml.safeLoad(yaml)
-  const cell = root.ownerDocument.createElement('template')
-  function amazing (thing) {
-    const base = Object.assign({url: '', x: 0, y: 0, width: 1, height: 1, rotate: 0, scale: 1}, thing.default && thing.default.image)
-    thing.items.forEach(media => {
-      if (media.items) return amazing(media)
-      const itemmm = Object.assign({}, media, {images: media.images.map(image => {
-        const i = Object.assign({}, base, image)
-        const rotated = i.rotate % 90 === 0 && i.rotate % 360
-        i.top = rotated ? i.width : 0
-        i.containerwidth = rotated ? i.height : i.width
-        i.containerheight = rotated ? i.width : i.height
-        return i
-      })})
-      cell.innerHTML = mustache.render(template, itemmm)
-      root.appendChild(cell.content)
-    })
-  }
-  amazing(json)
+export function render(container, template, yaml) {
+  iterate(container, template, yaml, (base, item) => {
+    return Object.assign({}, item, {images: (item.images || []).map(image => {
+      const i = Object.assign({}, base.image, image)
+      const rotated = i.rotate % 90 === 0 && i.rotate % 360
+      i.top = rotated ? i.width : 0
+      i.containerwidth = rotated ? i.height : i.width
+      i.containerheight = rotated ? i.width : i.height
+      return i
+    })})
+  })
 }

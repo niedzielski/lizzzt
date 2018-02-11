@@ -8,6 +8,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "0.1.18",
     "js-yaml": "3.10.0",
+    "lodash": "4.17.5",
     "mustache": "2.3.0",
     "webpack": "3.11.0",
     "webpack-dev-server": "2.11.1"

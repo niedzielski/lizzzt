@@ -1,7 +1,9 @@
 ---
 version: 0.0.0
-
+default:
+  image: {url: '', x: 0, y: 0, width: 1, height: 1, rotate: 0, scale: 1}
 items:
+
 - title: Nintendo Entertainment System
   default:
     image: {x: -218, width: 182, height: 250}
