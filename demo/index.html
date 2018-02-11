@@ -3,13 +3,14 @@
   <head>
     <meta charset=utf-8>
     <meta name=viewport content='width=device-width, initial-scale=1' />
-    <title>Library</title>
+    <title>Games</title>
     <style>
       :root {
         --min-column-width: 250px;
         --max-content-width: 1024px;
         --space: 1rem;
         --half-space: calc(var(--space) / 2);
+        --quarter-space: calc(var(--space) / 4);
       }
 
       html {box-sizing: border-box;}
@@ -31,11 +32,10 @@
         padding: 0;
       }
       .cell {
-        justify-self: center;
         text-align: center;
       }
       .titlebox {
-        margin-top: calc(var(--space) / 4);
+        margin: var(--quarter-space);
       }
       .title {
         font-weight: 550;
@@ -81,50 +81,15 @@
   </head>
   <body>
     <ul class=content></ul>
-    <script src=../node_modules/js-yaml/dist/js-yaml.min.js></script>
-    <script src=../node_modules/mustache/mustache.min.js></script>
-    <script>
+    <script src=http://localhost:8080/lizzzt.js defer></script>
+    <script defer>
       fetch('data.yaml')
         .then(response => response.text())
-        .then(jsyaml.safeLoad)
-        .then(json => {
-      // components can only be virtualized if you know their widths ahead of time so no autosizing (but preprocessing is possible)
-      // data file, webpage, blob of js (embedded on that webpage), git versioning. if i had file system access, would this be easy?
-      // todo: consider yaml or back to js for lighter wiehgt syntax
-      // scale? some kind of max-width.
-      // the cover project for games? libretro can do thumbnails. idk... i want them to look stellar but i also don't want to maintain these?
-      // would prefer thumbnails be consistently sized actually, especially within a system.
-      // filter sort reorder
-      // todo: url should include assets/thumbnails/?
-      // program, webpage, data, vcs-data
-      // keep honing the dsl. separate the library
-      const template = document.getElementById('cell-template').textContent
-      const cell = document.createElement('template')
-      function amazing (thing) {
-        const base = Object.assign({url: '', x: 0, y: 0, width: 1, height: 1, rotate: 0, scale: 1}, thing.default && thing.default.image)
-        thing.items.forEach(media => {
-          if (media.items) return amazing(media)
-          // anchor.href = media.app ? media.app : `${json.imageBaseURL || ''}/${media.images[0].url}`
-          // trying to figure  out how to create an element inline and grow it
-          // underneath another element so i can have a form thing where you keep
-          // all the ui
-          // anchor.onclick = () => {
-          //   document
-          // }
-          const itemmm = Object.assign({}, media, {images: media.images.map(image => {
-            const i = Object.assign({}, base, image)
-            const rotated = i.rotate % 90 === 0 && i.rotate % 360
-            i.top = rotated ? i.width : 0
-            i.containerwidth = rotated ? i.height : i.width
-            i.containerheight = rotated ? i.width : i.height
-            return i
-          })})
-          cell.innerHTML = Mustache.render(template, itemmm)
-          document.querySelector('.content').appendChild(cell.content)
+        .then(yaml => {
+          const root = document.querySelector('.content')
+          const template = document.getElementById('cell-template').textContent
+          return lizzzt.render(root, template, yaml)
         })
-      }
-      amazing(json)
-    })
     </script>
   </body>
 </html>
