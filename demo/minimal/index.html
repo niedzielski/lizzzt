@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <script type=x-yaml id=yaml>
+      version: 0.0.0
+      items:
+      - 20140126_141139(0).jpg
+      - 20141031_182236.jpg
+      - 20141210_132215.jpg
+      - 20150101_130300.jpg
+      - 20150114_140120.jpg
+      - IMG_20160619_125214.jpg
+      - IMG_20170723_223314.jpg
+      - IMG_20170815_175054.jpg
+    </script>
+    <script src=http://localhost:8080/lizzzt.js></script>
+    <script>
+      const template = '<img style="margin: .5rem;" src="photos/{{.}}">'
+      const yaml = document.getElementById('yaml').textContent
+      lizzzt.simple(document.body, template, yaml)
+    </script>
+  </body>
+</html>

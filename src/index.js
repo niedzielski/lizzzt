@@ -1,6 +1,22 @@
 const jsyaml = require('js-yaml')
 const mustache = require('mustache')
 
+export function simple(container, template, yaml) {
+  const json = jsyaml.safeLoad(yaml)
+  const cell = container.ownerDocument.createElement('template')
+  const render = (root) => {
+    root.items.forEach(item => {
+      cell.innerHTML = mustache.render(template, item)
+      container.appendChild(cell.content)
+      if (item.items) {
+        render(item)
+      }
+    })
+  }
+  render(json)
+}
+
+
 export function render(root, template, yaml) {
   const json = jsyaml.safeLoad(yaml)
   // components can only be virtualized if you know their widths ahead of time so no autosizing (but preprocessing is possible)

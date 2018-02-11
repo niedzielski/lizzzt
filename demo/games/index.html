@@ -82,7 +82,7 @@
     <ul class=content></ul>
     <script src=http://localhost:8080/lizzzt.js></script>
     <script>
-      fetch('data.yaml', {headers: {contentType: 'application/x-yaml'}})
+      fetch('data.yaml')
         .then(response => response.text())
         .then(yaml => {
           const root = document.querySelector('.content')
