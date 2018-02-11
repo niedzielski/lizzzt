@@ -1,5 +1,5 @@
 <html>
-  <body>
+  <body style='text-align: center'>
     <script type=x-yaml id=yaml>
       version: 0.0.0
       items:
@@ -14,7 +14,8 @@
     </script>
     <script src=http://localhost:8080/lizzzt.js></script>
     <script>
-      const template = '<img style="margin: .5rem;" src="photos/{{.}}">'
+      const template =
+        '<img style="margin: .5rem; vertical-align: top" src="photos/{{.}}">'
       const yaml = document.getElementById('yaml').textContent
       lizzzt.simple(document.body, template, yaml)
     </script>
