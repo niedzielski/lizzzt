@@ -1,5 +1,5 @@
 {
-  "name": "lib",
+  "name": "lizzzt",
   "version": "0.0.0",
   "scripts": {
     "start": "webpack-dev-server -dw",
