@@ -5,11 +5,8 @@
     <meta name=viewport content='width=device-width, initial-scale=1' />
     <title>Photobook</title>
     <link href=https://fonts.googleapis.com/css?family=Permanent+Marker rel=stylesheet>
+    <link rel=stylesheet href=../templates/polaroid.css>
     <style>
-      :root {
-        --polaroid-width: 8.85cm;
-        --space: 1rem;
-      }
       .page {
         list-style: none;
         padding: 0;
@@ -21,74 +18,27 @@
         grid-gap: var(--space);
         justify-content: space-around;
       }
-
-      .polaroid {
-        width: var(--polaroid-width);
-        height: 10.75cm;
-        background-color: #d9e2e5;
-        background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="1.5mm" height=".75mm" viewBox="0 0 1.5 .75"><path fill="#e2ebef60" d="M-.5.375l.5-.25.5.25-.5.25zM1 .375l.5-.25.5.25-.5.25zM.25 0l.5-.25.5.25-.5.25zM.25.75l.5-.25.5.25-.5.25z"/></svg>');
-        border-radius: .1px 5px / 3px 1px;
-        box-shadow: 1px .85px 1px 1px rgba(0, 0, 0, .15),
-          1.5px 2px 2px 2px rgba(0, 0, 0, .1);
-        overflow: hidden;
-        vertical-align: top;
-      }
-
-      .image {
-        width: 7.65cm;
-        height: 7.9cm;
-        margin: 6.5mm 6mm 0;
-        filter: sepia(30%) contrast(1.1) saturate(1.1);
-        opacity: .9;
-        box-shadow: 0 0 .3px .5px #0c080c, .5px .5px .3px .5px #faffff;
-        object-fit: cover;
-        border-radius: .2px .1px / 1px .5px;
-        display: block;
-      }
-
-      .caption-container {
-        width: 100%;
-        line-height: 2.2cm;
-        text-align: center;
-      }
-      .caption {
-        vertical-align: middle;
-        display:inline-block;
-        line-height: initial;
-        font-family: 'Permanent Marker';
-        font-size: 32px;
-        color: rgba(0, 0, 0, .9);
-      }
     </style>
-    <script type=x-template id=template>
-      <li class=polaroid>
-        <img class=image src='photos/{{url}}'>
-        <div class=caption-container>
-          <div class=caption>{{title}}</div>
-        </div>
-      </li>
-    </script>
     <script type=x-yaml id=yaml>
       version: 0.0.0
       items:
-      - { url: 20140126_141139(0).jpg, title: '2014-01-26' }
-      - { url: 20141031_182236.jpg, title: '2014-10-31' }
-      - { url: 20141210_132215.jpg, title: '2014-12-10' }
-      - { url: 20150101_130300.jpg, title: '2015-01-01' }
-      - { url: 20150114_140120.jpg, title: '2015-01-14' }
-      - { url: IMG_20160619_125214.jpg, title: '2016-06-19' }
-      - { url: IMG_20170723_223314.jpg, title: '2017-07-23' }
-      - { url: IMG_20170815_175054.jpg, title: '2017-08-15' }
+      - { url: photos/20140126_141139(0).jpg, title: '2014-01-26' }
+      - { url: photos/20141031_182236.jpg, title: '2014-10-31' }
+      - { url: photos/20141210_132215.jpg, title: '2014-12-10' }
+      - { url: photos/20150101_130300.jpg, title: '2015-01-01' }
+      - { url: photos/20150114_140120.jpg, title: '2015-01-14' }
+      - { url: photos/IMG_20160619_125214.jpg, title: '2016-06-19' }
+      - { url: photos/IMG_20170723_223314.jpg, title: '2017-07-23' }
+      - { url: photos/IMG_20170815_175054.jpg, title: '2017-08-15' }
     </script>
     <script src=http://localhost:8080/lizzzt.js></script>
   </head>
   <body>
     <ul class=page></ul>
     <script>
-      const root = document.querySelector('.page')
-      const template = document.getElementById('template').textContent
       const yaml = document.getElementById('yaml').textContent
-      lizzzt.simple(root, template, yaml)
+      const template = '<li>{{> polaroid}}</li>'
+      lizzzt.simple(yaml, document.querySelector('.page'), template, 'polaroid')
     </script>
   </body>
 </html>

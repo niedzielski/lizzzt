@@ -85,9 +85,8 @@
       fetch('data.yaml')
         .then(response => response.text())
         .then(yaml => {
-          const root = document.querySelector('.content')
           const template = document.getElementById('cell-template').textContent
-          lizzzt.render(root, template, yaml)
+          lizzzt.render(yaml, document.querySelector('.content'), template)
         })
     </script>
   </body>

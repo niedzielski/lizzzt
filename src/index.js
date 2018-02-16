@@ -2,11 +2,18 @@ const _ = require('lodash')
 const jsyaml = require('js-yaml')
 const mustache = require('mustache')
 
-function renderer(container, template) {
+function renderer(container, template, partials) {
   const cell = container.ownerDocument.createElement('template')
   return {
     render(item) {
-      const html = mustache.render(template, item)
+      const html = mustache.render(template, item, {
+        polaroid: `<div class=polaroid>
+        <img class=image src='{{url}}'>
+        <div class=caption-container>
+          <div class=caption>{{title}}</div>
+        </div>
+      </div>`
+      })
       if (html) {
         cell.innerHTML = html
         container.appendChild(cell.content)
@@ -24,10 +31,9 @@ function renderTransform(base, root, renderer, transform) {
   })
 }
 
-
-function iterate(container, template, yaml, transform) {
+function iterate(yaml, container, template, partials, transform) {
   const json = jsyaml.safeLoad(yaml)
-  renderTransform({}, json, renderer(container, template), transform)
+  renderTransform({}, json, renderer(container, template, partials), transform)
 }
 
 function mergeDefault(base, item) {
@@ -37,8 +43,8 @@ function mergeDefault(base, item) {
 
 function identity(base, item) { return item }
 
-export function simple(container, template, yaml) {
-  iterate(container, template, yaml, identity)
+export function simple(yaml, container, template, partials) {
+  iterate(yaml, container, template, partials, identity)
 }
 
 // components can only be virtualized if you know their widths ahead of time so no autosizing (but preprocessing is possible)
@@ -60,8 +66,8 @@ export function simple(container, template, yaml) {
 // }
 
 
-export function render(container, template, yaml) {
-  iterate(container, template, yaml, (base, item) => {
+export function render(yaml, container, template, partials) {
+  iterate(yaml, container, template, partials, (base, item) => {
     return Object.assign({}, item, {images: (item.images || []).map(image => {
       const i = Object.assign({}, base.image, image)
       const rotated = i.rotate % 90 === 0 && i.rotate % 360
