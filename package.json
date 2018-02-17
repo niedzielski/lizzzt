@@ -1,15 +1,43 @@
 {
   "name": "lizzzt",
   "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/niedzielski/lizzzt",
+  "repository": "github:niedzielski/lizzzt",
+  "bugs": "https://github.com/niedzielski/lizzzt/issues",
+  "license": "GPL-3.0",
   "scripts": {
     "start": "webpack-dev-server -dw",
-    "build": "NODE_ENV=production webpack -p"
+    "build": "NODE_ENV=production TS_NODE_TYPE_CHECK=1 webpack -p",
+    "lint": "eslint --cache --max-warnings 0 --report-unused-disable-directives --ext .ts .",
+    "style": "prettier './**/*.{css,json,md}'",
+    "format": "run-p 'lint -- --fix' 'style -- --write'",
+    "test": "run-p -s build lint 'style -- -l'"
+  },
+  "engines": {
+    "node": "9.2.1"
   },
   "devDependencies": {
+    "@types/clean-webpack-plugin": "0.1.1",
+    "@types/js-yaml": "3.10.1",
+    "@types/lodash": "4.14.104",
+    "@types/mustache": "0.8.30",
+    "@types/node": "9.4.6",
     "clean-webpack-plugin": "0.1.18",
+    "eslint": "4.18.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.6.0",
     "js-yaml": "3.10.0",
     "lodash": "4.17.5",
     "mustache": "2.3.0",
+    "npm-run-all": "4.1.2",
+    "pre-commit": "1.2.2",
+    "prettier": "1.10.2",
+    "ts-loader": "3.5.0",
+    "ts-node": "4.1.0",
+    "typescript": "2.7.2",
+    "typescript-eslint-parser": "13.0.0",
     "webpack": "3.11.0",
     "webpack-dev-server": "2.11.1"
   }
