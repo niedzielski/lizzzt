@@ -7,6 +7,9 @@
     <link href=https://fonts.googleapis.com/css?family=Permanent+Marker rel=stylesheet>
     <link rel=stylesheet href=../templates/polaroid.css>
     <style>
+      :root {
+        --space: .5rem;
+      }
       .page {
         list-style: none;
         padding: 0;
@@ -16,7 +19,7 @@
         display: grid;
         grid: none / repeat(auto-fit, var(--polaroid-width));
         grid-gap: var(--space);
-        justify-content: space-around;
+        justify-content: center;
       }
     </style>
     <script src=http://localhost:8080/lizzzt.js></script>
