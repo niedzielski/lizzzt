@@ -14,10 +14,11 @@
     </script>
     <script src=http://localhost:8080/lizzzt.js></script>
     <script>
-      const yaml = document.getElementById('yaml').textContent
-      const template =
-        '<img style="margin: .5rem; vertical-align: top" src="photos/{{.}}">'
-      lizzzt.simple(yaml, document.body, template)
+      lizzzt.render({
+        container: document.body,
+        yaml: document.getElementById('yaml').textContent, // should this be an array?
+        template: '<img style="margin: .5rem" src="photos/{{.}}">'
+      })
     </script>
   </body>
 </html>

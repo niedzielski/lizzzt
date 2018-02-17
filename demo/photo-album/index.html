@@ -10,7 +10,7 @@
       .page {
         list-style: none;
         padding: 0;
-        margin: calc(1 * var(--space)) auto;
+        margin: var(--space) auto;
         max-width: calc((var(--polaroid-width) + var(--space)) * 4 - var(--space));
 
         display: grid;
@@ -19,26 +19,17 @@
         justify-content: space-around;
       }
     </style>
-    <script type=x-yaml id=yaml>
-      version: 0.0.0
-      items:
-      - { url: photos/20140126_141139(0).jpg, title: '2014-01-26' }
-      - { url: photos/20141031_182236.jpg, title: '2014-10-31' }
-      - { url: photos/20141210_132215.jpg, title: '2014-12-10' }
-      - { url: photos/20150101_130300.jpg, title: '2015-01-01' }
-      - { url: photos/20150114_140120.jpg, title: '2015-01-14' }
-      - { url: photos/IMG_20160619_125214.jpg, title: '2016-06-19' }
-      - { url: photos/IMG_20170723_223314.jpg, title: '2017-07-23' }
-      - { url: photos/IMG_20170815_175054.jpg, title: '2017-08-15' }
-    </script>
     <script src=http://localhost:8080/lizzzt.js></script>
   </head>
   <body>
     <ul class=page></ul>
     <script>
-      const yaml = document.getElementById('yaml').textContent
-      const template = '<li>{{> polaroid}}</li>'
-      lizzzt.simple(yaml, document.querySelector('.page'), template, 'polaroid')
+      lizzzt.render({
+        container: document.querySelector('.page'),
+        yamlFilenames: ['photos.yaml'],
+        template: '<li>{{> polaroid}}</li>',
+        partialFilenames: {polaroid: '../templates/polaroid.mustache'}
+      })
     </script>
   </body>
 </html>

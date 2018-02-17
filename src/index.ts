@@ -14,18 +14,11 @@ interface Transform {
 function renderer(
   container: HTMLElement,
   template: string,
-  _partials: string[]
+  partials: {[name: string]: string}
 ): Render {
   const cell = container.ownerDocument.createElement('template')
   return (item: JSONValue) => {
-    const html = mustache.render(template, item, {
-      polaroid: `<div class=polaroid-container>
-        <img class=polaroid-image src='{{url}}'>
-        <div class=polaroid-caption-container>
-          <div class=polaroid-caption>{{title}}</div>
-        </div>
-      </div>`
-    })
+    const html = mustache.render(template, item, partials)
     if (html) {
       cell.innerHTML = html
       container.appendChild(cell.content)
@@ -47,57 +40,65 @@ function renderTransform(
   })
 }
 
-function iterate(
-  yaml: string,
-  container: HTMLElement,
-  template: string,
-  partials: string[],
-  transform: (base: JSONValue, item: JSONValue) => JSONValue
-): void {
-  const json = jsyaml.safeLoad(yaml)
-  // babel if js
-  // ([partials] || []).map(partial =>
-  //console.log(`../demo/templates/${partial}`))
-  renderTransform({}, json, renderer(container, template, partials), transform)
-}
-
 // can i use deepdefaults here or something lodashy?
 function mergeDefault(base: JSONValue, item: JSONValue): JSONValue {
   if (_.isObject(item)) return _.merge({}, base, item)
   return item || base
 }
 
-function identity(_base: JSONValue, item: JSONValue): JSONValue {
-  return item
+export interface RenderParams {
+  container: HTMLElement
+  yaml: string
+  yamlFilenames: string[]
+  template: string
+  templateFilename: string
+  partials: {[name: string]: string}
+  partialFilenames: {[name: string]: string}
+  transform: Transform
 }
 
-export function simple(
-  yaml: string,
-  container: HTMLElement,
-  template: string,
-  ...partials: string[]
-): void {
-  iterate(yaml, container, template, partials, identity)
-}
+const fetchText = (filenames: string[]): Promise<string[]> =>
+  Promise.all(
+    filenames.map(filename => fetch(filename).then(response => response.text()))
+  )
 
-export function renderFile(): void {}
+export const render = ({
+  container,
+  yaml = '',
+  yamlFilenames = [],
+  template = '{{.}}',
+  templateFilename = undefined,
+  partials = {},
+  partialFilenames = {},
+  transform = (_base, item) => item
+}: Partial<RenderParams>): Promise<any> => {
+  if (!container) throw new Error('Missing container.')
 
-export function render(
-  yaml: string,
-  container: HTMLElement,
-  template: string,
-  ...partials: string[]
-): void {
-  iterate(yaml, container, template, partials, (base: any, item: any) => {
-    return Object.assign({}, item, {
-      images: (item.images || []).map((image: JSONValue) => {
-        const i = Object.assign({}, base.image, image)
-        const rotated = i.rotate % 90 === 0 && i.rotate % 360
-        i.top = rotated ? i.width : 0
-        i.containerwidth = rotated ? i.height : i.width
-        i.containerheight = rotated ? i.width : i.height
-        return i
+  const jsons: Promise<JSONValue[]> = fetchText(yamlFilenames)
+    .then(yamls => [yaml, ...yamls])
+    .then(yamls => yamls.map(yaml => jsyaml.safeLoad(yaml)))
+
+  const templat = templateFilename
+    ? fetchText([templateFilename]).then(templates => templates.join(''))
+    : Promise.resolve(template)
+
+  const parialz: Promise<{[name: string]: string}> = Promise.all(
+    Object.entries(partialFilenames).map(([name, filename]) =>
+      fetchText([filename]).then(partial => ({[name]: partial.join('')}))
+    )
+  ).then(partialsy => Object.assign({}, partials, ...partialsy))
+
+  return Promise.all([jsons, templat, parialz]).then(
+    ([jsons, template, partials]) =>
+      jsons.forEach(json => {
+        if (json) {
+          renderTransform(
+            {},
+            json,
+            renderer(container, template, partials),
+            transform
+          )
+        }
       })
-    })
-  })
+  )
 }

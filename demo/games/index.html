@@ -21,7 +21,7 @@
         font-family: sans-serif;
       }
 
-      .content {
+      .page {
         display: grid;
         grid: none / repeat(auto-fit, minmax(var(--min-column-width), 1fr));
         grid-gap: var(--space);
@@ -79,15 +79,24 @@
     </script>
   </head>
   <body>
-    <ul class=content></ul>
+    <ul class=page></ul>
     <script src=http://localhost:8080/lizzzt.js></script>
     <script>
-      fetch('data.yaml')
-        .then(response => response.text())
-        .then(yaml => {
-          const template = document.getElementById('cell-template').textContent
-          lizzzt.render(yaml, document.querySelector('.content'), template)
+      lizzzt.render({
+        container: document.querySelector('.page'),
+        yamlFilenames: ['data.yaml'],
+        template: document.getElementById('cell-template').textContent,
+        transform: (base, item) => Object.assign({}, item, {
+          images: (item.images || []).map(image => {
+            const i = Object.assign({}, base.image, image)
+            const rotated = i.rotate % 90 === 0 && i.rotate % 360
+            i.top = rotated ? i.width : 0
+            i.containerwidth = rotated ? i.height : i.width
+            i.containerheight = rotated ? i.width : i.height
+            return i
+          })
         })
+      })
     </script>
   </body>
 </html>
