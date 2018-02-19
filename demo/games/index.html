@@ -4,6 +4,9 @@
     <meta charset=utf-8>
     <meta name=viewport content='width=device-width, initial-scale=1' />
     <title>Games</title>
+
+    <!-- i guess time to tackle the crop css thing -->
+
     <style>
       :root {
         --min-column-width: 250px;
@@ -22,14 +25,15 @@
       }
 
       .page {
+        list-style: none;
+        padding: 0;
+        margin: var(--space) auto;
+        max-width: var(--max-content-width);
+
         display: grid;
         grid: none / repeat(auto-fit, minmax(var(--min-column-width), 1fr));
         grid-gap: var(--space);
-
-        max-width: var(--max-content-width);
-        margin: auto;
-        list-style: none;
-        padding: 0;
+        justify-items: center;
       }
       .cell {
         text-align: center;
@@ -37,6 +41,7 @@
       .titlebox {
         margin: var(--quarter-space);
       }
+      .image {display: inline-block;}
       .title {
         font-weight: 550;
         color: black;
@@ -56,18 +61,7 @@
     <script type=x-template id=cell-template>
       <li class=cell>
         <a href='assets/originals/{{images.0.url}}'>
-          <div class=cover-container
-            style='width: {{images.0.containerwidth}}px; height: {{images.0.containerheight}}px;'>
-              <div
-                class=cover
-                style='
-                  background-image: url("assets/thumbnails/{{images.0.url}}");
-                  background-position: {{images.0.x}}px {{images.0.y}}px;
-                  transform: rotate({{images.0.rotate}}deg) scale({{images.0.scale}});
-                  top: {{images.0.top}}px;
-                  width: {{images.0.width}}px;
-                  height: {{images.0.height}}px;'></div>
-          </div>
+          {{>image}}
         </a>
         <div class=titlebox>
           <a class=title href='assets/originals/{{images.0.url}}'>{{title}}</a>
@@ -86,16 +80,31 @@
         container: document.querySelector('.page'),
         yamlFilenames: ['data.yaml'],
         template: document.getElementById('cell-template').textContent,
-        transform: (base, item) => Object.assign({}, item, {
+        partialFilenames: {image: '../templates/image.mustache'},
+        transform: (base, item) => {
+          const newItem = Object.assign({}, item, {
           images: (item.images || []).map(image => {
             const i = Object.assign({}, base.image, image)
             const rotated = i.rotate % 90 === 0 && i.rotate % 360
             i.top = rotated ? i.width : 0
-            i.containerwidth = rotated ? i.height : i.width
-            i.containerheight = rotated ? i.width : i.height
+            i.containerwidth = (rotated ? i.height : i.width) * i.scale
+            i.containerheight = (rotated ? i.width : i.height) * i.scale
             return i
           })
         })
+        if (newItem.images[0]) {
+          newItem.url = `assets/thumbnails/${newItem.images[0].url}`
+          newItem.x = newItem.images[0].x
+          newItem.y = newItem.images[0].y
+          newItem.rotate = newItem.images[0].rotate
+          newItem.scale = newItem.images[0].scale
+          newItem.top = newItem.images[0].top
+          newItem.width = newItem.images[0].width
+          newItem.height = newItem.images[0].height
+          newItem.containerwidth = newItem.images[0].containerwidth
+          newItem.containerheight = newItem.images[0].containerheight        }
+        return newItem
+      }
       })
     </script>
   </body>

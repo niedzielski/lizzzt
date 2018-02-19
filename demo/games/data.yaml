@@ -212,7 +212,7 @@ items:
   items:
   - title: Soul Calibur
     images:
-    - {url: dc_soulcalibur_jp_back.jpg, x: -15, width: 369, height: 314}
+    - {url: dc_soulcalibur_jp_back.jpg, x: -15, width: 369, height: 314, scale: .5}
   - title: The House of the Dead 2
     images:
     - {url: dc_thehouseofthedead2_5.jpg}
@@ -224,7 +224,7 @@ items:
   items:
   - title: Final Fantasy 7
     images:
-    - {url: ps1_finalfantasy7_front_eu.jpg, x: -17, width: 365, height: 312}
+    - {url: ps1_finalfantasy7_front_eu.jpg, x: -17, width: 365, height: 312, scale: .5}
   - title: Heart of Darkness
     images:
     - {url: ps1_heartofdarkness.jpg, x: -208, width: 192, height: 170}
