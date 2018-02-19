@@ -1,6 +1,7 @@
 # lizzzt
 
-just experimenting. only photo-album demo works as published.
+just experimenting. only photo-album and minimal demos works as
+published.
 
 ## License (GPLv3)
 
