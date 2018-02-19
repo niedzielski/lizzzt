@@ -1,5 +1,7 @@
 # lizzzt
 
+just experimenting. only photo-album demo works as published.
+
 ## License (GPLv3)
 
 © 2018 Stephen Niedzielski.
